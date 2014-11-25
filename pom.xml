@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ru.tsystems.tsproject</groupId>
+  <artifactId>sbb2</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <name>sbb2</name>
+  <modules>
+    <module>ui</module>
+    <module>core</module>
+  </modules>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>Maven Plugin Repository</name>
+            <url>http://repo1.maven.org/maven2</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+  <!--<pluginRepositories>http://mvnrepository.com</pluginRepositories>-->
+
+  <dependencyManagement>
+  <dependencies>
+      <dependency>
+          <groupId>org.wildfly.bom</groupId>
+          <artifactId>jboss-javaee-7.0-with-tools</artifactId>
+          <version>8.1.0.Final</version>
+          <type>pom</type>
+          <scope>import</scope>
+      </dependency>
+
+  </dependencies>
+  </dependencyManagement>
+  <build>
+      <plugins>
+
+          <plugin>
+              <groupId>org.apache.tomcat.maven</groupId>
+              <artifactId>tomcat7-maven-plugin</artifactId>
+              <version>2.2</version>
+              <configuration>
+                  <path>/ui</path>
+                  <update>true</update>
+                  <url>http://localhost:8080/manager/text</url>
+                  <server>local</server>
+              </configuration>
+          </plugin>
+          <plugin>
+              <groupId>org.wildfly.plugins</groupId>
+              <artifactId>wildfly-maven-plugin</artifactId>
+              <version>1.0.2.Final</version>
+              <configuration>
+                  <skip>true</skip>
+              </configuration>
+          </plugin>
+
+      </plugins>
+  </build>
+</project>
