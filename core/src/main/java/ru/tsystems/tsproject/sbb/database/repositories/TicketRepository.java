@@ -13,4 +13,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Integer> {
     Long countByUser_NameAndUser_SurnameAndUser_BirthDateAndTrip_Id
             (String name, String surname, Date birthDate, int tripId);
     List<Ticket> findByTrip_Id(int tripId);
+    Long countByTripIdAndSeat(int tripId, int seat);
+    List<Ticket> findByUser_Id(int userId);
 }

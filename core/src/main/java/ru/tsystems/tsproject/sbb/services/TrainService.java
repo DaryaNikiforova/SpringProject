@@ -15,7 +15,6 @@ import ru.tsystems.tsproject.sbb.transferObjects.RateTO;
 import ru.tsystems.tsproject.sbb.transferObjects.TrainTO;
 
 import javax.inject.Inject;
-import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,17 +38,10 @@ public class TrainService {
      * @return
      * @throws ServiceException
      */
-
     @PreAuthorize("hasRole('admin')")
-    public List<RateTO> getTrainRates() throws ServiceException {
-        List<Rate> rates = new ArrayList<Rate>();
+    public List<RateTO> getTrainRates() {
         LOGGER.info("Получение типов поездов");
-        try {
-            rates = rateRepository.findByForTrainTrue();
-        } catch (PersistenceException ex) {
-            LOGGER.error("Ошибка при получении информации о маршрутах");
-            throw new ServiceException("Ошибка при получении информации о маршрутах");
-        }
+        List<Rate> rates = rateRepository.findByForTrainTrue();
         List<RateTO> result = new ArrayList<RateTO>();
             for (Rate rate : rates) {
                 RateTO rateTO = new RateTO();
@@ -65,44 +57,31 @@ public class TrainService {
      * bad request or error with transaction. Throws TrainAlreadyExistException if trying
      * to add train that already exists into database.
      * @param trainTO train that want to add
-     * @throws ServiceException
+     * @throws TrainAlreadyExistException
      */
-
     @PreAuthorize("hasRole('admin')")
     public void addTrain(TrainTO trainTO) throws TrainAlreadyExistException
     {
-        //try {
-            if (!trainRepository.exists(trainTO.getNumber())) {
-                Train train = new Train(trainTO.getNumber(), trainTO.getSeatCount(), trainTO.getName(), new Rate(trainTO.getRateId()));
-                trainRepository.save(train);
-                LOGGER.info("Поезд добавлен в базу данных");
-            }
-            else {
-                LOGGER.error("Поезд с таким номером уже существует в базе данных");
-                throw new TrainAlreadyExistException("Поезд с таким номером уже существует в базе данных");
-            }
-        //} //catch (PersistenceException e) {
-            //LOGGER.error("Невозможно добавить поезд в базу данных");
-            //throw new ServiceException("Невозможно добавить поезд в базу данных");
-        //}
+        if (!trainRepository.exists(trainTO.getNumber())) {
+            Train train = new Train(trainTO.getNumber(), trainTO.getSeatCount(), trainTO.getName(), new Rate(trainTO.getRateId()));
+            trainRepository.save(train);
+            LOGGER.info("Поезд добавлен в базу данных");
+        }
+        else {
+            LOGGER.error("Поезд с номером " + trainTO.getNumber() + " уже существует в базе данных");
+            throw new TrainAlreadyExistException("Поезд с номером " + trainTO.getNumber() + " уже существует в базе данных");
+        }
     }
+
     /**
      * Returns list of all trains. Throws exception if database connection is lost,
      * bad request or error with transaction.
      * @return list of trains
-     * @throws ServiceException
      */
-
     @PreAuthorize("hasRole('admin')")
-    public List<TrainTO> getTrains() throws ServiceException {
-        List<Train> list = new ArrayList<Train>();
+    public List<TrainTO> getTrains() {
         LOGGER.info("Получение списка поездов");
-        try {
-            list = trainRepository.findAll();
-        } catch(PersistenceException ex) {
-            LOGGER.error("Ошибка при получении информации о поездах");
-            throw new ServiceException("Ошибка о получении информации о поездах");
-        }
+        List<Train> list = trainRepository.findAll();
         List<TrainTO> result = new ArrayList<TrainTO>();
         for (Train t:list) {
             TrainTO train = new TrainTO();
@@ -116,6 +95,7 @@ public class TrainService {
         return result;
     }
 
+    @PreAuthorize("hasRole('admin')")
     public TrainTO getTrain(int id) throws TrainNotFoundException {
         Train train = trainRepository.findOne(id);
         TrainTO trainTO;
@@ -133,23 +113,23 @@ public class TrainService {
     }
 
     @PreAuthorize("hasRole('admin')")
-    public void editTrain(TrainTO trainTO) throws TrainAlreadyExistException {
-        if (trainRepository.countById(trainTO.getNumber()) == 0) {
-            Train train = new Train(trainTO.getNumber(), trainTO.getSeatCount(), trainTO.getName(), new Rate(trainTO.getRateId()));
+    public void editTrain(TrainTO trainTO) throws TrainNotFoundException {
+            Train train = trainRepository.findOne(trainTO.getNumber());
+            if (train == null) {
+                throw new TrainNotFoundException("Поезда с номером " + trainTO.getNumber() + " не существует в базе данных");
+            }
+            train = new Train(train.getId(), trainTO.getSeatCount(), trainTO.getName(), new Rate(trainTO.getRateId()));
             trainRepository.save(train);
             LOGGER.info("Редактирование станции " + trainTO.getName() + " в базе данных");
-        } else {
-            LOGGER.error("Поезд с номером " + trainTO.getNumber() + "уже содержится в базе данных");
-            throw new TrainAlreadyExistException("Поезд с номером " + trainTO.getNumber() + "уже содержится в базе данных");
-        }
     }
 
     @PreAuthorize("hasRole('admin')")
-    public void deleteTrain(TrainTO trainTO) throws Exception {
-        if (trainRepository.findOne(trainTO.getNumber()) == null) {
-            throw new Exception();
+    public void deleteTrain(TrainTO trainTO) throws TrainNotFoundException {
+        Train train = trainRepository.findOne(trainTO.getNumber());
+        if (train == null) {
+            throw new TrainNotFoundException("Поезда с номером " + trainTO.getNumber() + " не существует в базе данных");
         }
-        trainRepository.delete(trainTO.getNumber());
+        trainRepository.delete(train);
         LOGGER.info("Удаление станции " + trainTO.getName() + " из базы данных");
     }
 

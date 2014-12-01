@@ -14,12 +14,13 @@
         <intercept-url pattern="/main/train/**" access="hasRole('admin')" />
         <intercept-url pattern="/main/route/**" access="hasRole('admin')" />
         <intercept-url pattern="/main/trip/**" access="hasRole('admin')" />
+        <intercept-url pattern="/main/cabinet/**" access="isAuthenticated()" />
         <intercept-url pattern="/main/ticket/**" access="isAuthenticated()" />
         <form-login login-page="/main/user/login"
                     default-target-url="/main/index"
                     authentication-failure-url="/main/user/login?failed=true"/>
         <logout logout-success-url="/main/index"/>
-        <access-denied-handler error-page="/error403.jsp"/>
+        <access-denied-handler error-page="/WEB-INF/jsp/error403.jsp"/>
     </http>
 
     <authentication-manager alias="authenticationManager">

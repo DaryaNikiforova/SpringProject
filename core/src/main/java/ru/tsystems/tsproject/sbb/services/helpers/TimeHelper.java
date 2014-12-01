@@ -51,16 +51,6 @@ public class TimeHelper {
     }
 
     /**
-     * Formats date to "dd.MM.yyyy в hh:mm" representation.
-     * @param date formatted date.
-     * @return string with formatted date.
-     */
-    public static String formatDate(Date date) {
-        SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy в hh:mm");
-        return df.format(date).replace(" ", "&nbsp;");
-    }
-
-    /**
      * Returns the date part of date6 without time.
      * @param date formatted date.
      * @return only date part.

@@ -12,15 +12,22 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
     <context:component-scan base-package="ru.tsystems.tsproject.sbb.controllers" />
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
 
+    <bean id="conversionService"
+          class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <bean class="ru.tsystems.tsproject.sbb.converters.ServiceConverter"/>
+        </property>
+    </bean>
+
+
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
           p:basename="messages"
           p:defaultEncoding="utf-8" />
 
-    <!--<mvc:view-controller path="user/login"/>-->
 </beans>

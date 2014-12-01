@@ -52,7 +52,7 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2">От</label>
                             <div class="col-lg-4">
-                                <form:select path="stationFrom" class="js-station-select" placeholder="Выберете станцию..." name="stationFrom" required="required">
+                                <form:select path="stationFrom" class="js-station-select" placeholder="Выберите станцию..." name="stationFrom" required="required">
                                     <form:option value="">Выберете станцию...</form:option>
                                     <c:forEach var="station" items="${stations}">
                                         <form:option value="${station.getName()}">${station.getName()}</form:option>
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <label class="control-label col-lg-2">До</label>
                             <div class="col-lg-4">
-                                <form:select path="stationTo" class="js-station-select" placeholder="Выберете станцию..." name="stationTo" required="required">
+                                <form:select path="stationTo" class="js-station-select" placeholder="Выберите станцию..." name="stationTo" required="required">
                                     <form:option value="">Выберете станцию...</form:option>
                                     <c:forEach var="station" items="${stations}">
                                         <form:option value="${station.getName()}">${station.getName()}</form:option>
@@ -94,7 +94,6 @@
                 </div>
             </div>
         </div>
-        <!-- /.row -->
         <c:if test="${isPost && (timetable == null || timetable.isEmpty())}">По Вашему запросу нет найденных маршрутов</c:if>
         <c:if test="${timetable != null && !timetable.isEmpty()}">
         <div class="row">

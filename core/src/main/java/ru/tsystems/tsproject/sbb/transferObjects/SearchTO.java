@@ -17,12 +17,12 @@ public class SearchTO {
 
     @NotNull
     @Size(min = 3, max = 100)
-    @Pattern(regexp="[A-Za-z\\p{L}][A-Za-z- \\p{L}]{0,98}[A-Za-z\\p{L}]")
+    @Pattern(regexp = "[0-9A-Za-z\\p{L}][0-9A-Za-z- \\p{L}]{0,98}[0-9A-Za-z\\p{L}]")
     String stationFrom;
 
     @NotNull
     @Size(min = 3, max = 100)
-    @Pattern(regexp="[A-Za-z\\p{L}][A-Za-z- \\p{L}]{0,98}[A-Za-z\\p{L}]")
+    @Pattern(regexp = "[0-9A-Za-z\\p{L}][0-9A-Za-z- \\p{L}]{0,98}[0-9A-Za-z\\p{L}]")
     String stationTo;
 
     @NotNull

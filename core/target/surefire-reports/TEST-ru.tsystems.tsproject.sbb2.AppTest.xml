@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.006" errors="0" skipped="0" tests="1" name="ru.tsystems.tsproject.sbb2.AppTest">
+<testsuite failures="0" time="0.007" errors="0" skipped="0" tests="1" name="ru.tsystems.tsproject.sbb2.AppTest">
   <properties>
+    <property name="idea.version" value="13.1.4"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home/jre/lib"/>
     <property name="java.vm.version" value="24.65-b04"/>
@@ -11,11 +12,12 @@
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="idea.launcher.port" value="7535"/>
     <property name="user.country" value="RU"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="unknown"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/Users/apple/sbb2"/>
+    <property name="user.dir" value="/Users/apple/sbb2/core"/>
     <property name="java.runtime.version" value="1.7.0_67-b01"/>
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home/jre/lib/endorsed"/>
@@ -37,13 +39,14 @@
     <property name="user.timezone" value="Europe/Moscow"/>
     <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
     <property name="java.specification.version" value="1.7"/>
+    <property name="idea.launcher.bin.path" value="/Applications/IntelliJ IDEA 13.app/bin"/>
     <property name="file.encoding" value="UTF-8"/>
     <property name="user.name" value="apple"/>
-    <property name="java.class.path" value="/usr/local/Cellar/maven/3.2.3/libexec/boot/plexus-classworlds-2.5.1.jar"/>
+    <property name="java.class.path" value="/usr/local/Cellar/maven/3.2.3/libexec/boot/plexus-classworlds-2.5.1.jar:/Applications/IntelliJ IDEA 13.app/lib/idea_rt.jar"/>
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.7.0_67.jdk/Contents/Home/jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean install wildfly:deploy"/>
+    <property name="sun.java.command" value="com.intellij.rt.execution.application.AppMain org.codehaus.classworlds.Launcher -Didea.version=13.1.4 package"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="ru"/>
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
@@ -61,5 +64,5 @@
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase time="0.006" classname="ru.tsystems.tsproject.sbb2.AppTest" name="testApp"/>
+  <testcase time="0.007" classname="ru.tsystems.tsproject.sbb2.AppTest" name="testApp"/>
 </testsuite>

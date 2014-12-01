@@ -6,9 +6,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import ru.tsystems.tsproject.sbb.exceptions.PageNotFoundException;
 import ru.tsystems.tsproject.sbb.services.StationService;
 import ru.tsystems.tsproject.sbb.services.TripService;
-import ru.tsystems.tsproject.sbb.services.exceptions.ServiceException;
+import ru.tsystems.tsproject.sbb.services.exceptions.StationNotFoundException;
+import ru.tsystems.tsproject.sbb.services.exceptions.TripNotFoundException;
 import ru.tsystems.tsproject.sbb.transferObjects.SearchStationTO;
 import ru.tsystems.tsproject.sbb.transferObjects.SearchTO;
 import ru.tsystems.tsproject.sbb.transferObjects.StationTO;
@@ -18,7 +20,6 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,17 +43,20 @@ public class SearchController {
     @RequestMapping(method = RequestMethod.POST, value="byStation")
     public String getTripsByStation(Model model,
                                     @ModelAttribute("searchStation") @Valid SearchStationTO searchStation,
-                                    BindingResult result) {
+                                    BindingResult result) throws PageNotFoundException {
         if (!result.hasErrors()) {
             List<TimetableTO> timetableList = null;
             try {
                 timetableList = tripService.getRoutesByStation(
-                        searchStation.getStation(),
-                        new SimpleDateFormat("dd.MM.yyyy").parse(searchStation.getDate()));
-            } catch (ServiceException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
+                searchStation.getStation(),
+                new SimpleDateFormat("dd.MM.yyyy").parse(searchStation.getDate()));
+            }
+            catch (ParseException e) {
+                result.rejectValue("date", "error.searchStation", "Дата должна быть в формате 'дд.мм.гггг'");
+                model.addAttribute("errors", result.getAllErrors());
+            } catch (StationNotFoundException e) {
+                result.rejectValue("date", "error.searchStation", "Задана не известная станция");
+                model.addAttribute("errors", result.getAllErrors());
             }
             model.addAttribute("stationTimetable", timetableList);
             model.addAttribute("isPost", true);
@@ -79,9 +83,12 @@ public class SearchController {
                         searchObject.getStationTo(),
                         new SimpleDateFormat("dd.MM.yyyy hh:mm").parse(searchObject.getDeparture()),
                         new SimpleDateFormat("dd.MM.yyyy hh:mm").parse(searchObject.getArrival()));
-            } catch (ServiceException e) {
-                e.printStackTrace();
             } catch (ParseException e) {
+                e.printStackTrace();
+            } catch (StationNotFoundException e) {
+                result.rejectValue("date", "error.searchStation", "Задана не известная станция");
+                model.addAttribute("errors", result.getAllErrors());
+            } catch (TripNotFoundException e) {
                 e.printStackTrace();
             }
             model.addAttribute("timetable", timetableList);
@@ -96,12 +103,7 @@ public class SearchController {
 
     @ModelAttribute("stations")
     public List<StationTO> getStations() {
-            List<StationTO> stations = new ArrayList<StationTO>();
-        try {
-            stations = stationService.getStations();
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
+        List<StationTO> stations = stationService.getStations();
         return stations;
     }
 }

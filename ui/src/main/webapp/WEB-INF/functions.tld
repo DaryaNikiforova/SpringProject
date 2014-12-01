@@ -10,13 +10,19 @@
 
     <function>
         <name>formatDate</name>
-        <function-class>ru.tsystems.tsproject.sbb.services.helpers.TimeHelper</function-class>
+        <function-class>ru.tsystems.tsproject.sbb.helper.ClientHelper</function-class>
         <function-signature>java.lang.String formatDate(java.util.Date)</function-signature>
     </function>
 
     <function>
         <name>formatPrice</name>
-        <function-class>ru.tsystems.tsproject.sbb.services.helpers.TicketHelper</function-class>
+        <function-class>ru.tsystems.tsproject.sbb.helper.ClientHelper</function-class>
         <function-signature>java.lang.String formatPrice(double)</function-signature>
+    </function>
+
+    <function>
+        <name>formatService</name>
+        <function-class>ru.tsystems.tsproject.sbb.helper.ClientHelper</function-class>
+        <function-signature>java.lang.String formatService(java.lang.String,java.lang.Double)</function-signature>
     </function>
 </taglib>

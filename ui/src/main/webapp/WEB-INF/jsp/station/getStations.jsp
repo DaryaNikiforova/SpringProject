@@ -10,12 +10,21 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:flatTemplate menuBlock="station" menuRow="get" pageHeader="Станции">
+    <jsp:attribute name="footer">
+        <script src="${pageContext.request.contextPath}/resources/js/ajax-delete-items.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                ajaxHelper.setDeleteLinks('${pageContext.request.contextPath}/main/station/delete');
+            });
+        </script>
+    </jsp:attribute>
     <jsp:body>
         <div class="row">
         <div class="col-lg-6">
                 <c:choose>
                 <c:when test="${stations.isEmpty() || stations == null}">На данный момент никаких станций не задано</c:when>
                 <c:otherwise>
+        <div class="js-alerts">
         <c:if test="${errors != null && !errors.isEmpty()}">
             <div class="alert alert-danger">
                 <c:forEach items="${errors}" var="error">
@@ -23,6 +32,7 @@
                 </c:forEach>
             </div>
         </c:if>
+        </div>
         <div class="table-responsive">
             <table class="table table-striped table-hover ">
                 <thead>
@@ -32,10 +42,10 @@
                 </thead>
                 <tbody>
                 <c:forEach var="station" items="${stations}">
-                <tr>
+                <tr data-id="${station.id}">
                     <td>${station.getName()}</td>
                     <td><a href="${pageContext.request.contextPath}/main/station/edit/${station.id}">редактировать</a>
-                        <a href="${pageContext.request.contextPath}/main/station/delete/${station.id}">удалить</a></td>
+                        <a class="js-delete-link" href="${pageContext.request.contextPath}/main/station/delete/${station.id}" data-id="${station.id}">удалить</a></td>
                 </tr>
                 </c:forEach>
                 <tr>

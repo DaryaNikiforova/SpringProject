@@ -3,14 +3,13 @@ package ru.tsystems.tsproject.sbb.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import ru.tsystems.tsproject.sbb.exceptions.BadRequestException;
 import ru.tsystems.tsproject.sbb.exceptions.PageNotFoundException;
+import ru.tsystems.tsproject.sbb.responses.ErrorMessage;
+import ru.tsystems.tsproject.sbb.responses.ValidationResponse;
 import ru.tsystems.tsproject.sbb.services.TrainService;
 import ru.tsystems.tsproject.sbb.services.TripService;
-import ru.tsystems.tsproject.sbb.services.exceptions.ServiceException;
 import ru.tsystems.tsproject.sbb.services.exceptions.TrainAlreadyExistException;
 import ru.tsystems.tsproject.sbb.services.exceptions.TrainNotFoundException;
 import ru.tsystems.tsproject.sbb.transferObjects.TrainTO;
@@ -22,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by apple on 17.11.14.
+ * Controller for managing train operations.
  */
 
 @Controller
@@ -38,11 +37,7 @@ public class TrainController {
     @RequestMapping(method = RequestMethod.GET, value = "add")
     public String addTrain(Model model) {
         model.addAttribute("train", new TrainTO());
-        try {
-            model.addAttribute("rates", trainService.getTrainRates());
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
+        model.addAttribute("rates", trainService.getTrainRates());
         return ADDTRAIN;
     }
 
@@ -61,100 +56,119 @@ public class TrainController {
 
             } catch (TrainAlreadyExistException e) {
                 result.rejectValue("number", "error.train", "Поезд с таким номером уже существует в базе данных");
-                try {
-                    model.addAttribute("rates", trainService.getTrainRates());
-                } catch (ServiceException e1) {
-                    e1.printStackTrace();
-                }
+                model.addAttribute("rates", trainService.getTrainRates());
                 model.addAttribute("errors", result.getAllErrors());
                 return ADDTRAIN;
-            } catch (ServiceException e) {
-                e.printStackTrace();
             }
-            return "redirect:getTrains";
+            return "redirect:/main/train/";
         }
 
 
-    @RequestMapping(method = RequestMethod.GET, value = "getTrains")
+    @RequestMapping(method = RequestMethod.GET, value = "")
     public String getTrains(Model model) {
-        try {
-            model.addAttribute("trains", trainService.getTrains());
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
+        model.addAttribute("trains", trainService.getTrains());
         return "train/getTrains";
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "edit/{id}")
-    public String editTrain(Model model, @PathVariable("id") Integer id) throws PageNotFoundException {
+    public String editTrain(Model model, @PathVariable("id") String trainId) throws PageNotFoundException, BadRequestException {
+        int id=0;
         try {
+            id = Integer.parseInt(trainId);
             TrainTO train = trainService.getTrain(id);
             model.addAttribute("train", train);
             model.addAttribute("rates", trainService.getTrainRates());
         } catch (TrainNotFoundException e) {
             throw new PageNotFoundException(id);
-        } catch (ServiceException e) {
-            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            throw new BadRequestException();
         }
         return EDITTRAIN;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "edit/{id}")
-    public String postEditTrain( Model model, @ModelAttribute("train") @Valid TrainTO train, BindingResult result) {
+    public String postEditTrain(Model model, @ModelAttribute("train") @Valid TrainTO train, BindingResult result, @PathVariable("id") String trainId)
+            throws PageNotFoundException, BadRequestException {
+        int id=0;
         try {
+            id = Integer.parseInt(trainId);
+            train.setNumber(id);
             if (!result.hasErrors()) {
                 trainService.editTrain(train);
-                return "redirect:/main/train/getTrains";
+                return "redirect:/main/train/";
             } else {
                 model.addAttribute("rates", trainService.getTrainRates());
                 model.addAttribute("errors", result.getAllErrors());
             }
-        } catch (TrainAlreadyExistException ex) {
-            result.rejectValue("number", "error.train", "Поезд с таким номером уже существует в базе данных");
-            model.addAttribute("errors", result.getAllErrors());
-            try {
-                model.addAttribute("rates", trainService.getTrainRates());
-            } catch (ServiceException e) {
-                e.printStackTrace();
-            }
-            return EDITTRAIN;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (TrainNotFoundException e) {
+            throw new PageNotFoundException(train.getNumber());
+        } catch (NumberFormatException e) {
+            throw new BadRequestException();
         }
         return EDITTRAIN;
     }
 
     @RequestMapping(value = "delete/{id}")
-    public String deleteTrain(@PathVariable("id") Integer id, Model model) throws PageNotFoundException {
+    public String deleteTrain(@PathVariable("id") String trainId, Model model) throws PageNotFoundException, BadRequestException {
+        int id = 0;
         try {
+            id = Integer.parseInt(trainId);
             List<TripTO> trips = tripService.getTripsByTrain(id);
             if (!trips.isEmpty()) {
                 List<String> errors = new ArrayList<String>();
-                StringBuilder builder = new StringBuilder("Поезд участвует в рейсах: ");
-                for (int i = 0; i < trips.size(); i++) {
-                    builder.append(trips.get(i).getNumber());
-                    if (i != (trips.size() - 1)) {
-                        builder.append(", ");
-                    }
-                }
-                builder.append(". Сначала отредактируйте рейсы.");
-                errors.add(builder.toString());
+                errors.add(getDeleteErrorMessage(trips));
                 model.addAttribute("errors", errors);
                 model.addAttribute("trains", trainService.getTrains());
                 return "train/getTrains";
             } else {
                 TrainTO trainTO = trainService.getTrain(id);
-                try {
-                    trainService.deleteTrain(trainTO);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                trainService.deleteTrain(trainTO);
             }
         } catch (TrainNotFoundException e) {
             throw new PageNotFoundException(id);
-        } catch (ServiceException e) {
-            e.printStackTrace();
+        } catch (NumberFormatException e) {
+            throw new BadRequestException();
         }
-        return "redirect:/main/train/getTrains";
+        return "redirect:/main/train/";
+    }
+
+    @RequestMapping(value = "delete/{id}.json")
+    public @ResponseBody ValidationResponse deleteTrainAjax(@PathVariable("id") String trainId)
+            throws PageNotFoundException, BadRequestException {
+        ValidationResponse response = new ValidationResponse();
+        List<ErrorMessage> errorMessages = new ArrayList<ErrorMessage>();
+        int id = 0;
+        try {
+            id = Integer.parseInt(trainId);
+            List<TripTO> trips = tripService.getTripsByTrain(id);
+            if (!trips.isEmpty()) {
+                errorMessages.add(new ErrorMessage("all", getDeleteErrorMessage(trips)));
+                response.setStatus("FAIL");
+            } else {
+                TrainTO trainTO = trainService.getTrain(id);
+                trainService.deleteTrain(trainTO);
+                response.setStatus("SUCCESS");
+            }
+        }  catch (TrainNotFoundException e) {
+            errorMessages.add(new ErrorMessage("all", "Ошибка при удалении"));
+            response.setStatus("FAIL");
+        } catch (NumberFormatException e) {
+            errorMessages.add(new ErrorMessage("all", "Ошибка при удалении"));
+            response.setStatus("FAIL");
+        }
+        response.setErrorMessageList(errorMessages);
+        return response;
+    }
+
+    private String getDeleteErrorMessage(List<TripTO> trips) {
+        StringBuilder builder = new StringBuilder("Поезд участвует в рейсах: ");
+        for (int i = 0; i < trips.size(); i++) {
+            builder.append(trips.get(i).getId());
+            if (i != (trips.size() - 1)) {
+                builder.append(", ");
+            }
+        }
+        builder.append(". Сначала отредактируйте рейсы.");
+        return builder.toString();
     }
 }

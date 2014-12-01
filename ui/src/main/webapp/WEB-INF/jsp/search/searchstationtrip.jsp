@@ -3,6 +3,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="f" uri="http://example.com/functions" %>
 
 <spring:message var="pageHeader" code="searchByStation.pageHeader"/>
 <spring:message var="stationPlaceholder" code="searchByStation.placeholder.station"/>
@@ -103,8 +104,8 @@
                             <tr>
                                 <td>${entry.getTrainNumber()}</td>
                                 <td>${entry.getRouteName()}</br>${entry.getTrainName()}</td>
-                                <td>${entry.getDepDate()}</br>${entry.getStationFrom()}</td>
-                                <td>${entry.getArriveDate()}</br>${entry.getStationTo()}</td>
+                                <td>${f:formatDate(entry.getDepDate())}</br>${entry.getStationFrom()}</td>
+                                <td>${f:formatDate(entry.getArriveDate())}</br>${entry.getStationTo()}</td>
                             </tr>
                         </c:forEach>
                         </tbody>

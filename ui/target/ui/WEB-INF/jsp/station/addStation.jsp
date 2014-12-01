@@ -6,8 +6,6 @@
 
 <t:flatTemplate menuBlock="station" menuRow="add" pageHeader="Новая станция">
     <jsp:body>
-        <!--c:set var="nameCondition" value="{errors.station.name.empty}"-->
-
         <div class="row">
             <div class="col-lg-6">
                 <div class="well">
@@ -18,13 +16,12 @@
                             </div>
                         </c:if>
                         <fieldset>
-                            <!--<div class="form-group <--c:if test="{nameCondition}">has-error">-->
+                            <div class="form-group">
                                 <label class="control-label col-lg-3">Имя станции:</label>
                                 <div class="col-lg-9">
                                     <form:input path="name" type="text" class="form-control" name="name" maxlength="100" value="${param.name}" required="required" />
                                 </div>
-                                <!--c:if test="{nameCondition}"><label class="text-danger col-lg-12">{errors}</label>-->
-                            <!--/div-->
+                            </div>
                             <div class="form-group">
                                 <div class="col-lg-12">
                                     <button type="submit" class="btn btn-primary pull-right">Создать</button>

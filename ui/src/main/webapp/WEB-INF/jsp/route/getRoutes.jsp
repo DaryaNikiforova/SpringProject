@@ -10,12 +10,22 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 
 <t:flatTemplate menuBlock="route" menuRow="get" pageHeader="Маршруты">
+    <jsp:attribute name="footer">
+        <script src="${pageContext.request.contextPath}/resources/js/ajax-delete-items.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                ajaxHelper.setDeleteLinks('${pageContext.request.contextPath}/main/route/delete');
+            });
+        </script>
+    </jsp:attribute>
+
     <jsp:body>
         <div class="row">
             <div class="col-md-8">
                 <c:choose>
                 <c:when test="${routes == null || routes.isEmpty()}">На данный момент никаких рейсов не задано</c:when>
                 <c:otherwise>
+                <div class="js-alerts">
                 <c:if test="${errors != null && !errors.isEmpty()}">
                     <div class="alert alert-danger">
                         <c:forEach items="${errors}" var="error">
@@ -23,6 +33,7 @@
                         </c:forEach>
                     </div>
                 </c:if>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -36,12 +47,14 @@
                         </thead>
                         <tbody>
                         <c:forEach var="route" items="${routes}">
-                            <tr>
+                            <tr data-id="${route.getNumber()}">
                                 <td>${route.getNumber()}</td>
                                 <td>${route.getRoute()}</td>
                                 <td>${route.getTime()}</td>
                                 <td>${route.getDistance()}</td>
-                                <td><a href="${pageContext.request.contextPath}/main/route/delete/${route.number}">удалить</a></td>
+                                <td><a href="${pageContext.request.contextPath}/main/route/edit/${route.number}">редактировать</a></td>
+                                <td><a class="js-delete-link" href="${pageContext.request.contextPath}/main/route/delete/${route.number}"
+                                       data-id="${route.getNumber()}">удалить</a></td>
                             </tr>
                         </c:forEach>
                         <tr>

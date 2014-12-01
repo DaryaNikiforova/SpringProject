@@ -63,7 +63,7 @@
                         <div class="panel-body">
                             <div class="col-md-offset-3 col-md-10">
                                 <c:forEach var="s" items="${ticket.getServices()}">
-                                    <p class="form-control-static">${s}</p>
+                                    <p class="form-control-static">${f:formatService(s.name, s.value)}</p>
                                 </c:forEach>
                             </div>
                         </div>

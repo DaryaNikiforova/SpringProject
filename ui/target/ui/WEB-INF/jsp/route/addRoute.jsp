@@ -47,8 +47,8 @@
                             "<div class=\"form-group\">" +
                             "<label class=\"control-label col-md-4\">Станция №" + (count + 1) + "</label>" +
                             "<div class=\"col-md-8\">" +
-                            "<select class=\"js-station-select" + count + "\" placeholder=\"Выберете станцию...\" id=\"routeEntries"+ count + ".stationName\" name=\"routeEntries[" + count + "].stationName\" required>" +
-                            "<option value=\"\">Выберете станцию...</option>" +
+                            "<select class=\"js-station-select" + count + "\" placeholder=\"Выберите станцию...\" id=\"routeEntries"+ count + ".stationName\" name=\"routeEntries[" + count + "].stationName\" required>" +
+                            "<option value=\"\">Выберите станцию...</option>" +
                             "</select>" +
                             "</div></div>" +
                             "<div class=\"form-group\">" +

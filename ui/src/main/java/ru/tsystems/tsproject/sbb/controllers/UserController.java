@@ -17,6 +17,7 @@ import ru.tsystems.tsproject.sbb.transferObjects.UserTO;
 
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.text.ParseException;
 
 /**
  * Created by apple on 17.11.14.
@@ -49,7 +50,13 @@ public class UserController {
             try {
                 userService.addUser(user);
             } catch (UserAlreadyExistException e) {
-                e.printStackTrace();
+                result.rejectValue("login", "error.user", "Такой логин уже существует");
+            } catch (ParseException e) {
+                result.rejectValue("birthDate", "error.user", "Дата должна быть в формате 'дд.мм.гггг'");
+            }
+            if (result.hasErrors()) {
+                model.addAttribute("errors", result.getAllErrors());
+                return "user/registration";
             }
             Authentication authRequest = new UsernamePasswordAuthenticationToken(user.getLogin(), password);
             Authentication authResult = authManager.authenticate(authRequest);

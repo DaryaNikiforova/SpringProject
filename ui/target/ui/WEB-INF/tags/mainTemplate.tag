@@ -26,8 +26,9 @@
                     </c:if>
                     <security:authorize access="isAuthenticated()">
                         <security:authorize access="hasRole('admin')">
-                            <li><a href="<%=request.getContextPath()%>/main/station/getStations">Администрирование</a></li>
+                            <li><a href="<%=request.getContextPath()%>/main/station/">Администрирование</a></li>
                         </security:authorize>
+                            <li><a href="<%=request.getContextPath()%>/main/cabinet/">Личный кабинет</a></li>
                             <li><a href="<c:url value="/j_spring_security_logout"/>">Выйти</a></li>
                     </security:authorize>
                     <security:authorize access="isAnonymous()">

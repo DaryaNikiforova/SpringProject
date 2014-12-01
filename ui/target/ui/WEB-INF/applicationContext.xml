@@ -6,6 +6,7 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
        http://www.springframework.org/schema/context
@@ -15,7 +16,7 @@
        http://www.springframework.org/schema/jee
        http://www.springframework.org/schema/jee/spring-jee-3.1.xsd
        http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <jee:jndi-lookup jndi-name="java:/datasources/tsystems_db" id="dataSource" resource-ref="true" expected-type="javax.sql.DataSource"/>
     <jee:jndi-lookup jndi-name="java:/EntityManagerFactory" id="entityManagerFactory" expected-type="javax.persistence.EntityManagerFactory" />
@@ -30,7 +31,7 @@
     <jpa:repositories base-package="ru.tsystems.tsproject.sbb.database.repositories"/>
     <import resource="security.xml"/>
 
-    <context:component-scan base-package="ru.tsystems.tsproject.sbb.database.dao.impl"/>
+    <context:component-scan base-package="ru.tsystems.tsproject.sbb.database"/>
     <context:component-scan base-package="ru.tsystems.tsproject.sbb.services"/>
     <context:component-scan base-package="ru.tsystems.tsproject.sbb.secure.adapters"/>
 </beans>

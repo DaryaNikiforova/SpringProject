@@ -26,8 +26,8 @@ public class TimeBoundsValidator implements ConstraintValidator<TimeBounds, Obje
     @Override
     public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
         BeanWrapper wrapper = PropertyAccessorFactory.forBeanPropertyAccess(o);
-        SimpleDateFormat sdf = new SimpleDateFormat();
-        sdf.applyPattern("dd.MM.yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+        sdf.applyPattern("dd.MM.yyyy HH:mm");
         final Object firstObj = wrapper.getPropertyValue(firstFieldName);
         final Object secondObj = wrapper.getPropertyValue(secondFieldName);
         Date departure = new Date();

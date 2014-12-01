@@ -4,15 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.AutoPopulatingList;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import ru.tsystems.tsproject.sbb.exceptions.BadRequestException;
+import ru.tsystems.tsproject.sbb.exceptions.PageNotFoundException;
+import ru.tsystems.tsproject.sbb.responses.ErrorMessage;
+import ru.tsystems.tsproject.sbb.responses.ValidationResponse;
 import ru.tsystems.tsproject.sbb.services.RouteService;
 import ru.tsystems.tsproject.sbb.services.StationService;
 import ru.tsystems.tsproject.sbb.services.TripService;
-import ru.tsystems.tsproject.sbb.services.exceptions.ServiceException;
-import ru.tsystems.tsproject.sbb.services.exceptions.StationNotFoundException;
+import ru.tsystems.tsproject.sbb.services.exceptions.RouteNotFoundException;
+import ru.tsystems.tsproject.sbb.services.exceptions.TripNotFoundException;
 import ru.tsystems.tsproject.sbb.transferObjects.RouteEntryTO;
 import ru.tsystems.tsproject.sbb.transferObjects.RouteTO;
 import ru.tsystems.tsproject.sbb.transferObjects.TripTO;
@@ -45,28 +46,18 @@ public class RouteController {
 
     @RequestMapping(method = RequestMethod.GET, value = "add")
     public String addRoute(Model model) {
-        try {
-            model.addAttribute("stations", stationService.getStations());
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
+        model.addAttribute("stations", stationService.getStations());
         return ADDROUTE;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "add")
     public String postAddRoute(Model model, @ModelAttribute("route") @Valid RouteTO routeTO, BindingResult result) {
-        try {
-            model.addAttribute("stations", stationService.getStations());
-            if (!result.hasErrors()) {
-                routeService.addRoute(routeTO);
-                return "redirect:/main/route";
-            } else {
-                model.addAttribute("errors", result.getAllErrors());
-            }
-        } catch (StationNotFoundException e) {
-            e.printStackTrace();
-        } catch (ServiceException e) {
-            e.printStackTrace();
+        model.addAttribute("stations", stationService.getStations());
+        if (!result.hasErrors()) {
+            routeService.addRoute(routeTO);
+            return "redirect:/main/route";
+        } else {
+            model.addAttribute("errors", result.getAllErrors());
         }
         return ADDROUTE;
     }
@@ -78,19 +69,20 @@ public class RouteController {
     }
 
     @RequestMapping(value = "delete/{id}")
-    public String deleteRoute(Model model, @PathVariable("id") Integer id) {
-        List<TripTO> trips = tripService.getTripsByRoute(id);
+    public String deleteRoute(Model model, @PathVariable("id") String stationId) throws PageNotFoundException, BadRequestException {
+        List<TripTO> trips;
+        int id = 0;
+        try {
+            id = Integer.parseInt(stationId);
+            trips = tripService.getTripsByRoute(id);
+        } catch (TripNotFoundException e) {
+            throw new PageNotFoundException(id);
+        } catch (NumberFormatException e) {
+            throw new BadRequestException();
+        }
         if (!trips.isEmpty()) {
             List<String> errors = new ArrayList<String>();
-            StringBuilder builder = new StringBuilder("По данному маршруту направляются следующие рейсы: ");
-            for (int i = 0; i < trips.size(); i++) {
-                builder.append(trips.get(i).getId());
-                if (i != (trips.size() - 1)) {
-                    builder.append(", ");
-                }
-            }
-            builder.append(". Сначала отредактируйте рейсы");
-            errors.add(builder.toString());
+            errors.add(getDeleteErrorMessage(trips));
             model.addAttribute("errors", errors);
             model.addAttribute("routes", routeService.getAllRoutes());
             return "route/getRoutes";
@@ -99,40 +91,89 @@ public class RouteController {
             route.setNumber(id);
             try {
                 routeService.deleteRoute(route);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (RouteNotFoundException e) {
+                throw new PageNotFoundException(id);
             }
         }
-        return "redirect:/main/route/getRoutes";
+        return "redirect:/main/route/";
+    }
+
+    @RequestMapping(value = "delete/{id}.json")
+    public @ResponseBody ValidationResponse deleteRouteAjax(@PathVariable("id") String stationId)
+            throws PageNotFoundException, BadRequestException {
+        ValidationResponse response = new ValidationResponse();
+        List<ErrorMessage> errorMessages = new ArrayList<ErrorMessage>();
+        List<TripTO> trips;
+        int id = 0;
+        try {
+            id = Integer.parseInt(stationId);
+            trips = tripService.getTripsByRoute(id);
+        } catch (TripNotFoundException e) {
+            throw new PageNotFoundException(id);
+        } catch (NumberFormatException e) {
+            throw new BadRequestException();
+        }
+        if (!trips.isEmpty()) {
+            errorMessages.add(new ErrorMessage("all", getDeleteErrorMessage(trips)));
+            response.setStatus("FAIL");
+        } else {
+            RouteTO route = new RouteTO();
+            route.setNumber(id);
+            try {
+                routeService.deleteRoute(route);
+                response.setStatus("SUCCESS");
+            } catch (RouteNotFoundException e) {
+                errorMessages.add(new ErrorMessage("all", "Ошибка при удалении"));
+                response.setStatus("FAIL");
+            }
+        }
+        response.setErrorMessageList(errorMessages);
+        return response;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "edit/{id}")
-    public String editRoute(Model model, @PathVariable("id") Integer id) {
+    public String editRoute(Model model, @PathVariable("id") String routeId) throws PageNotFoundException, BadRequestException {
+        RouteTO routeTO;
+        int id = 0;
         try {
-            RouteTO routeTO = routeService.getRoute(id);
-            model.addAttribute("route", routeTO);
-            model.addAttribute("stations", stationService.getStations());
-        } catch (ServiceException e) {
-            e.printStackTrace();
+            id = Integer.parseInt(routeId);
+            routeTO = routeService.getRoute(id);
+        } catch (RouteNotFoundException e) {
+            throw new PageNotFoundException(id);
+        } catch (NumberFormatException e) {
+            throw new BadRequestException();
         }
+        model.addAttribute("route", routeTO);
+        model.addAttribute("stations", stationService.getStations());
         return EDITROUTE;
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "edit/{id}")
-    public String postEditRoute(Model model, @ModelAttribute("route") @Valid RouteTO routeTO, BindingResult result) {
-        try {
-            model.addAttribute("stations", stationService.getStations());
-            if (!result.hasErrors()) {
+    public String postEditRoute(Model model, @ModelAttribute("route") @Valid RouteTO routeTO, BindingResult result) throws PageNotFoundException {
+        model.addAttribute("stations", stationService.getStations());
+        if (!result.hasErrors()) {
+            try {
                 routeService.editRoute(routeTO);
-                return "redirect:/main/route";
-            } else {
-                model.addAttribute("errors", result.getAllErrors());
+            } catch (RouteNotFoundException e) {
+                throw new PageNotFoundException(routeTO.getNumber());
             }
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
+
+            return "redirect:/main/route";
+        } else {
+            model.addAttribute("errors", result.getAllErrors());
         }
         return EDITROUTE;
+    }
+
+    private String getDeleteErrorMessage(List<TripTO> trips) {
+        StringBuilder builder = new StringBuilder("По данному маршруту направляются следующие рейсы: ");
+        for (int i = 0; i < trips.size(); i++) {
+            builder.append(trips.get(i).getId());
+            if (i != (trips.size() - 1)) {
+                builder.append(", ");
+            }
+        }
+        builder.append(". Сначала отредактируйте рейсы");
+        return builder.toString();
     }
 }

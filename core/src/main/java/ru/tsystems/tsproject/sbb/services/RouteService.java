@@ -11,14 +11,13 @@ import ru.tsystems.tsproject.sbb.database.entity.Station;
 import ru.tsystems.tsproject.sbb.database.repositories.RouteEntryRepository;
 import ru.tsystems.tsproject.sbb.database.repositories.RouteRepository;
 import ru.tsystems.tsproject.sbb.database.repositories.StationRepository;
-import ru.tsystems.tsproject.sbb.services.exceptions.ServiceException;
+import ru.tsystems.tsproject.sbb.services.exceptions.RouteNotFoundException;
 import ru.tsystems.tsproject.sbb.services.exceptions.StationNotFoundException;
 import ru.tsystems.tsproject.sbb.services.helpers.RouteHelper;
 import ru.tsystems.tsproject.sbb.transferObjects.RouteEntryTO;
 import ru.tsystems.tsproject.sbb.transferObjects.RouteTO;
 
 import javax.inject.Inject;
-import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -49,6 +48,7 @@ public class RouteService {
      */
     @PreAuthorize("hasRole('admin')")
     public List<RouteTO> getAllRoutes() {
+        LOGGER.info("Получение списка всех маршрутов из базы данных");
         List<Route> routes = routeRepository.findAll();
         List<RouteTO> results = new ArrayList<RouteTO>();
         for (Route r:routes) {
@@ -59,6 +59,7 @@ public class RouteService {
             route.setTime(RouteHelper.getRouteTime(r));
             results.add(route);
         }
+        LOGGER.info("Найдено " + results.size() + " маршрутов");
         return results;
     }
 
@@ -71,16 +72,15 @@ public class RouteService {
      */
 
     @PreAuthorize("hasRole('admin')")
-    public void addRoute(RouteTO routeTO) throws StationNotFoundException {
+    public void addRoute(RouteTO routeTO) {
             Route route = new Route();
             route.setRouteEntries(mapRouteEntries(routeTO.getRouteEntries(), route));
             routeRepository.save(route);
             LOGGER.info("Добавление в таблицу маршрута");
     }
 
-    List<RouteEntry> mapRouteEntries(List<RouteEntryTO> routeEntryTOs, Route route) throws StationNotFoundException {
+    private List<RouteEntry> mapRouteEntries(List<RouteEntryTO> routeEntryTOs, Route route) {
         List<RouteEntry> routeEntries = new ArrayList<RouteEntry>();
-
         for (int i = 0; i < routeEntryTOs.size(); i++) {
             RouteEntryTO routeEntryTO = routeEntryTOs.get(i);
             RouteEntry routeEntry = new RouteEntry();
@@ -88,12 +88,7 @@ public class RouteService {
             routeEntry.setMinute(routeEntryTO.getMinute());
             routeEntry.setHour(routeEntryTO.getHour());
             routeEntry.setSeqNumber(i+1);
-            try {
-                routeEntry.setStation(stationRepository.findByName(routeEntryTO.getStationName()));
-            } catch (PersistenceException ex) {
-                LOGGER.error("Ошибка при получении информации о станции");
-                throw new StationNotFoundException("Ошибка при получении информации о станции");
-            }
+            routeEntry.setStation(stationRepository.findByName(routeEntryTO.getStationName()));
             routeEntry.setRoute(route);
             routeEntries.add(routeEntry);
         }
@@ -101,14 +96,14 @@ public class RouteService {
     }
 
     @PreAuthorize("hasRole('admin')")
-    public List<RouteTO> getRoutesByStation(int id) throws ServiceException {
-        List<RouteEntry> list = new ArrayList<RouteEntry>();
-        try {
-            list = routeEntryRepository.findByStation_Id(id);
-        } catch (PersistenceException ex) {
-            LOGGER.error("Невозможно получить информацию о маршрутах");
-            throw new ServiceException("Невозможно получить информацию о маршрутах");
+    public List<RouteTO> getRoutesByStation(int id) throws StationNotFoundException {
+        LOGGER.info("Получение списка маршрутов для станции с id=" + id);
+        Station station = stationRepository.findOne(id);
+        if (station == null) {
+            LOGGER.error("Станции с id=" + id + " в базе данных не существует");
+            throw new StationNotFoundException("Станции с id=" + id + " в базе данных не существует");
         }
+        List<RouteEntry> list = routeEntryRepository.findByStation_Id(station.getId());
         List<RouteTO> results = new ArrayList<RouteTO>();
         for (RouteEntry routeEntry : list) {
             RouteTO routeTO = new RouteTO();
@@ -121,9 +116,9 @@ public class RouteService {
     }
 
     @PreAuthorize("hasRole('admin')")
-    public void deleteRoute(RouteTO route) throws Exception {
+    public void deleteRoute(RouteTO route) throws RouteNotFoundException {
         if (routeRepository.findOne(route.getNumber()) == null) {
-            throw new Exception();
+            throw new RouteNotFoundException("Маршрута с id=" + route.getNumber() +" не существует в базе данных");
         }
         List<RouteEntry> entries = routeEntryRepository.findByRoute_Id(route.getNumber());
         for (RouteEntry entry : entries) {
@@ -134,8 +129,11 @@ public class RouteService {
     }
 
     @PreAuthorize("hasRole('admin')")
-    public RouteTO getRoute(int id) {
+    public RouteTO getRoute(int id) throws RouteNotFoundException {
         Route route = routeRepository.findOne(id);
+        if (route == null) {
+            throw new RouteNotFoundException("Маршрута с id=" + id +" не существует в базе данных");
+        }
         RouteTO routeTO = new RouteTO();
         routeTO.setNumber(route.getId());
         AutoPopulatingList<RouteEntryTO> routeEntryTOs = new AutoPopulatingList<RouteEntryTO>(RouteEntryTO.class);
@@ -159,10 +157,10 @@ public class RouteService {
     }
 
     @PreAuthorize("hasRole('admin')")
-    public void editRoute(RouteTO routeTO) throws Exception {
+    public void editRoute(RouteTO routeTO) throws RouteNotFoundException {
         Route route = routeRepository.findOne(routeTO.getNumber());
         if (route == null) {
-            throw new Exception();
+            throw new RouteNotFoundException("Маршрута с id=" + routeTO.getNumber() +" не существует в базе данных");
         }
         List<RouteEntry> routeEntries = route.getRouteEntries();
         Collections.sort(routeEntries, new Comparator<RouteEntry>() {
@@ -188,5 +186,4 @@ public class RouteService {
         routeRepository.save(route);
         LOGGER.info("Изменение маршрута №" + routeTO.getNumber() + " в таблице");
     }
-
 }

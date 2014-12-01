@@ -19,11 +19,6 @@
         </script>
     </jsp:attribute>
     <jsp:body>
-        <!--c:set var="numCondition" value="{errors.get('number').length() > 0}"/-->
-        <!--c:set var="nameCondition" value="{errors.get('name').length() > 0}"/-->
-        <!--c:set var="seatCondition" value="{errors.get('seatCount').length() > 0}"/-->
-        <!--c:set var="rateCondition" value="{errors.get('rate').length() > 0}"/-->
-
         <div class="row">
             <div class="col-lg-6">
                 <div class="well">
@@ -34,22 +29,19 @@
                             </div>
                         </c:if>
                         <fieldset>
-                            <div class="form-group <c:if test="${numCondition}">has-error</c:if>">
+                            <div class="form-group">
                                 <label class="control-label col-lg-3">Номер</label>
                                 <div class="col-lg-9"><form:input path="number" type="number" class="form-control" min="1" maxlength="7" placeholder="1099" name="number" value="${param.number}" required="required" /></div>
-                                <!--c:if test="{numCondition}"><label class="text-danger col-lg-12">{errors.get("number")}</label><--/c:if-->
                             </div>
-                            <div class="form-group <c:if test="${nameCondition}">has-error</c:if>">
+                            <div class="form-group">
                                 <label class="control-label col-lg-3">Имя</label>
                                 <div class="col-lg-9"><form:input path="name" type="text" class="form-control" maxlength="100" placeholder="Сапсан (не обязательно)" name="name" value="${param.name}" /></div>
-                                <!--c:if test="{nameCondition}"><label class="text-danger col-lg-12">{errors.get("name")}</label><-/c:if-->
                             </div>
-                            <div class="form-group <c:if test="${seatCondition}">has-error</c:if>">
+                            <div class="form-group">
                                 <label class="control-label col-lg-3">Количество мест</label>
                                 <div class="col-lg-9"><form:input path="seatCount" type="number" class="form-control" min="1" placeholder="100" maxlength="4" name="seatCount" value="${param.seatCount}" required="required" /></div>
-                                <!--c:if test="{seatCondition}"><label class="text-danger col-lg-12">{errors.get("seatCount")}</label><--/c:if-->
                             </div>
-                            <div class="form-group <c:if test="${rateCondition}">has-error</c:if>">
+                            <div class="form-group">
                                 <label class="control-label col-lg-3">Тип поезда</label>
                                 <div class="col-lg-9">
                                     <form:select path="rateId" class="form-control js-select" placeholder="Выберите тип..." name="rate" required="required">
@@ -59,7 +51,6 @@
                                         </c:forEach>
                                     </form:select>
                                 </div>
-                                <!--c:if test="{rateCondition}"><label class="text-danger col-lg-12">{errors.get("rate")}</label><--/c:if-->
                             </div>
                             <div class="form-group">
                                 <div class="col-lg-12">

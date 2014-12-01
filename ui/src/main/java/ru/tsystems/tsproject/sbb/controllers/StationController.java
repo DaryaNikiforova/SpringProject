@@ -3,14 +3,13 @@ package ru.tsystems.tsproject.sbb.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import ru.tsystems.tsproject.sbb.exceptions.BadRequestException;
 import ru.tsystems.tsproject.sbb.exceptions.PageNotFoundException;
+import ru.tsystems.tsproject.sbb.responses.ErrorMessage;
+import ru.tsystems.tsproject.sbb.responses.ValidationResponse;
 import ru.tsystems.tsproject.sbb.services.RouteService;
 import ru.tsystems.tsproject.sbb.services.StationService;
-import ru.tsystems.tsproject.sbb.services.exceptions.ServiceException;
 import ru.tsystems.tsproject.sbb.services.exceptions.StationAlreadyExistException;
 import ru.tsystems.tsproject.sbb.services.exceptions.StationNotFoundException;
 import ru.tsystems.tsproject.sbb.transferObjects.RouteTO;
@@ -50,7 +49,7 @@ public class StationController {
                 model.addAttribute("errors", result.getAllErrors());
                 return ADDSTATION;
             }
-            return "redirect:getStations";
+            return "redirect:/main/station";
         }
         else {
             model.addAttribute("errors", result.getAllErrors());
@@ -58,23 +57,23 @@ public class StationController {
         return ADDSTATION;
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "getStations")
+    @RequestMapping(method = RequestMethod.GET, value = "")
     public String getStations(Model model) {
-        try {
-            model.addAttribute("stations", stationService.getStations());
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
+        model.addAttribute("stations", stationService.getStations());
         return GETSTATIONS;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "edit/{id}")
-    public String editStation(Model model, @PathVariable("id") Integer id) throws PageNotFoundException {
+    public String editStation(Model model, @PathVariable("id") String stationId) throws Exception {
+        int id = 0;
         try {
+            id = Integer.parseInt(stationId);
             StationTO station = stationService.getStation(id);
             model.addAttribute("station", station);
         } catch (StationNotFoundException e) {
             throw new PageNotFoundException(id);
+        } catch (NumberFormatException e) {
+            throw new BadRequestException();
         }
         return EDITSTATION;
     }
@@ -84,12 +83,14 @@ public class StationController {
         if (!result.hasErrors()) {
             try {
                 stationService.editStation(station);
-            } catch (StationAlreadyExistException e) {
-                result.rejectValue("name", "error.station", "Такая станция уже существует в базе данных");
-                model.addAttribute("errors", result.getAllErrors());
-                return EDITSTATION;
+            //} catch (StationAlreadyExistException e) {
+              //  result.rejectValue("name", "error.station", "Такая станция уже существует в базе данных");
+              //  model.addAttribute("errors", result.getAllErrors());
+              //  return EDITSTATION;
+            } catch (StationNotFoundException e) {
+                throw new PageNotFoundException(station.getId());
             }
-            return "redirect:/main/station/getStations";
+            return "redirect:/main/station/";
         } else {
             model.addAttribute("errors", result.getAllErrors());
         }
@@ -97,34 +98,61 @@ public class StationController {
     }
 
     @RequestMapping(value = "delete/{id}")
-    public String deleteStation(@PathVariable("id") Integer id, Model model) throws PageNotFoundException {
+    public String deleteStation(@PathVariable("id") String stationId, Model model) throws PageNotFoundException {
+        int id = 0;
         try {
+            id = Integer.parseInt(stationId);
             List<RouteTO> routes = routeService.getRoutesByStation(id);
             if (!routes.isEmpty()) {
                 List<String> errors = new ArrayList<String>();
-                StringBuilder builder = new StringBuilder("Станция содержится в маршрутах: ");
-                for (int i = 0; i < routes.size(); i++) {
-                    builder.append(routes.get(i).getNumber());
-                    if (i != (routes.size() - 1)) {
-                        builder.append(", ");
-                    }
-                }
-                builder.append(". Сначала отредактируйте маршруты");
-                errors.add(builder.toString());
+                errors.add(getDeleteErrorMessage(routes));
                 model.addAttribute("errors", errors);
                 model.addAttribute("stations", stationService.getStations());
                 return GETSTATIONS;
             } else {
-                try {
-                    StationTO station = stationService.getStation(id);
-                    stationService.deleteStation(station);
-                } catch (StationNotFoundException e) {
-                    throw new PageNotFoundException(id);
-                }
+                StationTO station = stationService.getStation(id);
+                stationService.deleteStation(station);
             }
-        } catch (ServiceException e) {
-            e.printStackTrace();
+        } catch (StationNotFoundException e) {
+            throw new PageNotFoundException(id);
         }
-        return "redirect:/main/" + GETSTATIONS;
+        return "redirect:/main/station/";
+    }
+
+    @RequestMapping(value = "delete/{id}.json")
+    public @ResponseBody ValidationResponse deleteStationAjax(@PathVariable("id") String stationId) throws PageNotFoundException {
+        ValidationResponse response = new ValidationResponse();
+        List<ErrorMessage> errorMessages = new ArrayList<ErrorMessage>();
+        int id = 0;
+        try {
+            id = Integer.parseInt(stationId);
+            List<RouteTO> routes = routeService.getRoutesByStation(id);
+            if (!routes.isEmpty()) {
+                errorMessages.add(new ErrorMessage("all", getDeleteErrorMessage(routes)));
+                response.setStatus("FAIL");
+            } else {
+                StationTO station = stationService.getStation(id);
+                stationService.deleteStation(station);
+                response.setStatus("SUCCESS");
+
+            }
+        } catch (StationNotFoundException e) {
+            errorMessages.add(new ErrorMessage("all", "Ошибка при удалении"));
+            response.setStatus("FAIL");
+        }
+        response.setErrorMessageList(errorMessages);
+        return response;
+    }
+
+    private String getDeleteErrorMessage(List<RouteTO> routes) {
+        StringBuilder builder = new StringBuilder("Станция содержится в маршрутах: ");
+        for (int i = 0; i < routes.size(); i++) {
+            builder.append(routes.get(i).getNumber());
+            if (i != (routes.size() - 1)) {
+                builder.append(", ");
+            }
+        }
+        builder.append(". Сначала отредактируйте маршруты");
+        return builder.toString();
     }
 }

@@ -12,7 +12,6 @@ import ru.tsystems.tsproject.sbb.services.exceptions.StationNotFoundException;
 import ru.tsystems.tsproject.sbb.transferObjects.StationTO;
 
 import javax.inject.Inject;
-import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +35,6 @@ public class StationService {
      * @param stationTO added to database
      * @throws ServiceException
      */
-
     @PreAuthorize("hasRole('addRole')")
     public void addStation(StationTO stationTO) throws StationAlreadyExistException {
             if (stationRepository.countByName(stationTO.getName()) == 0) {
@@ -48,14 +46,6 @@ public class StationService {
                 LOGGER.error("Станция уже существует в базе данных");
                 throw new StationAlreadyExistException("Станция уже существует в базе данных");
             }
-
-//        } catch (PersistenceException ex) {
-//            LOGGER.error("Ошибка при добавлении станции в базу данных");
-//            throw new ServiceException("Ошибка при добавлении станции в базу данных");
-//        } catch (NullPointerException ex) {
-//            LOGGER.error("Попытка некорректного ввода в поле данных");
-//            throw new NullPointerException("Попытка некорректного ввода в поле данных");
-//        }
     }
 
     /**
@@ -64,16 +54,9 @@ public class StationService {
      * @return list of stations.
      * @throws ServiceException
      */
-
     @PreAuthorize("hasRole('admin')")
-    public List<StationTO> getStations() throws ServiceException {
-        List<Station> stations = new ArrayList<Station>();
-        try {
-            stations = stationRepository.findAll();
-        } catch (PersistenceException ex) {
-            LOGGER.error("Ошибка при получении списка станций");
-            throw new ServiceException("Ошибка при получении списка станций");
-        }
+    public List<StationTO> getStations() {
+        List<Station> stations = stationRepository.findAll();
         List<StationTO> stationTOs = new ArrayList<StationTO>();
         for (Station station : stations) {
             stationTOs.add(new StationTO(station.getId(), station.getName()));
@@ -82,26 +65,28 @@ public class StationService {
     }
 
     @PreAuthorize("hasRole('admin')")
-    public void editStation(StationTO stationTO) throws StationAlreadyExistException {
-        if (stationRepository.countByName(stationTO.getName()) == 0) {
-            Station station = new Station();
+    public void editStation(StationTO stationTO) throws StationNotFoundException {
+        Station station = stationRepository.findOne(stationTO.getId());
+        if (station == null) {
+            throw new StationNotFoundException("");
+        } else {
             station.setName(stationTO.getName());
-            station.setId(stationTO.getId());
             stationRepository.save(station);
             LOGGER.info("Редактирование станции " + stationTO.getName() + " в базе данных");
-        }
-        else {
-            LOGGER.error("Попытка добавления повторяющейся станции в базу данныx");
-            throw new StationAlreadyExistException("Попытка добавления повторяющейся станции в базу данных");
         }
     }
 
     @PreAuthorize("hasRole('admin')")
     public void deleteStation(StationTO stationTO) throws StationNotFoundException {
-        stationRepository.delete(stationTO.getId());
+        Station station = stationRepository.findOne(stationTO.getId());
+        if (station == null) {
+            throw new StationNotFoundException("Станции с id=" + stationTO.getId() + " не существует");
+        }
+        stationRepository.delete(station);
         LOGGER.info("Удаление станции " + stationTO.getName() + " из базы данных");
     }
 
+    @PreAuthorize("hasRole('admin')")
     public StationTO getStation(int id) throws StationNotFoundException {
         Station station = stationRepository.findOne(id);
         StationTO stationTO;

@@ -11,12 +11,29 @@
 <%@ taglib prefix="f" uri="http://example.com/functions" %>
 
 <t:flatTemplate menuBlock="trip" menuRow="get" pageHeader="Рейсы">
+    <jsp:attribute name="footer">
+        <script src="${pageContext.request.contextPath}/resources/js/ajax-delete-items.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                ajaxHelper.setDeleteLinks('${pageContext.request.contextPath}/main/trip/delete');
+            });
+        </script>
+    </jsp:attribute>
     <jsp:body>
         <div class="row">
             <div class="col-md-8">
                 <c:choose>
                 <c:when test="${trips == null || trips.isEmpty()}">На данный момент никаких рейсов не задано</c:when>
                 <c:otherwise>
+                <div class="js-alerts">
+                    <c:if test="${errors != null && !errors.isEmpty()}">
+                        <div class="alert alert-danger">
+                            <c:forEach items="${errors}" var="error">
+                                ${error}<br/>
+                            </c:forEach>
+                        </div>
+                    </c:if>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -31,14 +48,15 @@
                         </thead>
                         <tbody>
                         <c:forEach var="trip" items="${trips}">
-                            <tr>
+                            <tr data-id="${trip.getId()}">
                                 <td><c:out value="${trip.getNumber()}"/></td>
                                 <td>${trip.getRoute()}</td>
                                 <td>${f:formatDate(trip.getDeparture())}</td>
                                 <td>${f:formatDate(trip.getArrival())}</td>
                                 <td><c:out value="${trip.getSeatCount()}"/></td>
                                 <td class="text-right"><a href="${pageContext.request.contextPath}/main/trip/passengers?tripId=${trip.getId()}">посмотреть пассажиров</a></td>
-                                <td><a href="${pageContext.request.contextPath}/main/trip/delete/${trip.id}">удалить</a></td>
+                                <td><a class="js-delete-link" href="${pageContext.request.contextPath}/main/trip/delete/${trip.id}"
+                                       data-id="${trip.getId()}">удалить</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

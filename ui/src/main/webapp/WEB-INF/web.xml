@@ -30,140 +30,12 @@
     </filter-mapping>
 
     <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.RegisterServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/main/*</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.LoginServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AddStationServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.secure.AddStationServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LogoutServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.LogoutServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>BuyTicketServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.BuyTicketServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetStationsServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.secure.GetStationsServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetStationsServlet</servlet-name>
-        <url-pattern>/secure/getStations</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>GetTrainsServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.secure.GetTrainsServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetTrainsServlet</servlet-name>
-        <url-pattern>/secure/getTrains</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>AddTrainServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.secure.AddTrainServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddTrainServlet</servlet-name>
-        <url-pattern>/secure/addTrain</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>GetRoutesServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.secure.GetRoutesServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetRoutesServlet</servlet-name>
-        <url-pattern>/secure/getRoutes</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>AddRouteServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.secure.AddRouteServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AddRouteServlet</servlet-name>
-        <url-pattern>/secure/addRoute</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>GetTripsServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.secure.GetTripsServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetTripsServlet</servlet-name>
-        <url-pattern>/secure/getTrips</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>SearchTripServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.SearchTripServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchStationTripServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.SearchStationTripServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>PurchaseServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.PurchaseServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>IndexServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.IndexServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>GetPassangersServlet</servlet-name>
-        <servlet-class>ru.tsystems.tsproject.sbb.controllers.secure.GetPassengersServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetPassangersServlet</servlet-name>
-        <url-pattern>/secure/getPassengers</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>IndexServlet</servlet-name>
-        <url-pattern>/index</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>PurchaseServlet</servlet-name>
-        <url-pattern>/purchasesummary</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchStationTripServlet</servlet-name>
-        <url-pattern>/searchStationTrips</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchTripServlet</servlet-name>
-        <url-pattern>/searchTrip</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>BuyTicketServlet</servlet-name>
-        <url-pattern>/buyTicket</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LogoutServlet</servlet-name>
-        <url-pattern>/logout</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AddStationServlet</servlet-name>
-        <url-pattern>/secure/addStation</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/login</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-    <servlet-name>RegisterServlet</servlet-name>
-    <url-pattern>/registration</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
@@ -172,14 +44,23 @@
 
     <error-page>
         <error-code>403</error-code>
-        <location>/error403.jsp</location>
+        <location>/WEB-INF/jsp/error403.jsp</location>
     </error-page>
 
     <error-page>
         <error-code>404</error-code>
-        <location>/error404.jsp</location>
+        <location>/WEB-INF/jsp/error404.jsp</location>
     </error-page>
 
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/jsp/error500.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>400</error-code>
+        <location>/WEB-INF/jsp/error400.jsp</location>
+    </error-page>
     <context-param>
         <param-name>isLog4jAutoInitializationDisabled</param-name>
         <param-value>false</param-value>

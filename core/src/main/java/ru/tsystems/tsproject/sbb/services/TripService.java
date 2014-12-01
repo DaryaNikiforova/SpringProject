@@ -4,18 +4,21 @@ import org.apache.log4j.Logger;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.tsystems.tsproject.sbb.database.entity.Route;
 import ru.tsystems.tsproject.sbb.database.entity.RouteEntry;
+import ru.tsystems.tsproject.sbb.database.entity.Ticket;
 import ru.tsystems.tsproject.sbb.database.entity.Trip;
-import ru.tsystems.tsproject.sbb.database.repositories.RouteEntryRepository;
-import ru.tsystems.tsproject.sbb.database.repositories.TripRepository;
+import ru.tsystems.tsproject.sbb.database.repositories.*;
 import ru.tsystems.tsproject.sbb.services.exceptions.ServiceException;
+import ru.tsystems.tsproject.sbb.services.exceptions.StationNotFoundException;
+import ru.tsystems.tsproject.sbb.services.exceptions.TrainNotFoundException;
+import ru.tsystems.tsproject.sbb.services.exceptions.TripNotFoundException;
 import ru.tsystems.tsproject.sbb.services.helpers.RouteHelper;
 import ru.tsystems.tsproject.sbb.services.helpers.TimeHelper;
 import ru.tsystems.tsproject.sbb.transferObjects.TimetableTO;
 import ru.tsystems.tsproject.sbb.transferObjects.TripTO;
 
 import javax.inject.Inject;
-import javax.persistence.PersistenceException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +37,10 @@ public class TripService {
     @Inject RouteEntryRepository routeEntryRepository;
     @Inject TripRepository tripRepository;
     @Inject TicketService ticketService;
+    @Inject StationRepository stationRepository;
+    @Inject TrainRepository trainRepository;
+    @Inject RouteRepository routeRepository;
+    @Inject TicketRepository ticketRepository;
     /**
      * Returns timetable records routes contains specified dates in specified time intervals.
      * Throws exception if database connection is lost, bad request or error with transaction.
@@ -46,23 +53,19 @@ public class TripService {
      */
 
     @PreAuthorize("permitAll")
-    public List<TimetableTO> searchTrains(String stationFrom, String stationTo, Date timeFrom, Date timeTo) throws ServiceException {
+    public List<TimetableTO> searchTrains(String stationFrom, String stationTo, Date timeFrom, Date timeTo)
+            throws StationNotFoundException, TripNotFoundException {
         List<TimetableTO> results = new ArrayList<TimetableTO>();
-        List<RouteEntry> list = new ArrayList<RouteEntry>();
-        try {
-            list = routeEntryRepository.findByStations(stationFrom, stationTo);
+        if (stationRepository.findByName(stationFrom) == null || stationRepository.findByName(stationTo) == null) {
+            throw new StationNotFoundException("Введена не существующая станция");
         }
-        catch (PersistenceException ex) {
-            LOGGER.error("Невозможно получить информацию о маршрутах");
-            throw new ServiceException("Невозможно получить информацию о маршрутах");
-        }
-
+        List<RouteEntry> list = routeEntryRepository.findByStations(stationFrom, stationTo);
+        if (list != null) {
             for (int i = 0; i < list.size(); i++) {
                 int hour = list.get(i).getHour();
                 int minute = list.get(i).getMinute();
                 Date depTimeFrom = TimeHelper.getHourBack(timeFrom, hour, minute);
                 Date depTimeTo = TimeHelper.getHourBack(timeTo, hour, minute);
-                try {
                     List<Trip> trips = tripRepository.findByRoute_IdAndDepartureTimeBetween(list.get(i).getRoute().getId(), depTimeFrom, depTimeTo);
                     if (trips != null) {
                         for (Trip t : trips) {
@@ -80,15 +83,13 @@ public class TripService {
                             result.setTime(RouteHelper.getRouteTime(t.getRoute(), stationFrom, stationTo));
                             result.setDistance(RouteHelper.getRouteDistance(t.getRoute()));
                             result.setTrainNumber(t.getTrain().getId());
-                            result.setSeatCount(ticketService.getAvaliableSeats(stationFrom, stationTo, t.getId(), t.getRoute().getId()).size());
+                            result.setSeatCount(ticketService.getAvaliableSeats(stationFrom, stationTo, t.getId()).size());
                             results.add(result);
                         }
                     }
-                } catch (PersistenceException ex) {
-                    LOGGER.error("Невозможно получить информацию о расписании");
-                    throw new ServiceException("Невозможно получить информацию о расписании");
+
                 }
-            }
+        }
         return results;
     }
 
@@ -102,20 +103,17 @@ public class TripService {
      */
 
     @PreAuthorize("permitAll")
-    public List<TimetableTO> getRoutesByStation(String name, Date depDate) throws ServiceException {
-        List<RouteEntry> list = new ArrayList<RouteEntry>();
-        try {
-            list = routeEntryRepository.findByStation_Name(name);
-        } catch (PersistenceException ex) {
-            LOGGER.error("Невозможно получить информацию о маршрутах");
-            throw new ServiceException("Невозможно получить информацию о маршрутах");
+    public List<TimetableTO> getRoutesByStation(String name, Date depDate) throws StationNotFoundException {
+        if (stationRepository.findByName(name) == null) {
+            throw new StationNotFoundException("Введена не существующая станция");
         }
+        List<RouteEntry> list = routeEntryRepository.findByStation_Name(name);
         List<TimetableTO> results = new ArrayList<TimetableTO>();
+        if (list != null) {
         for (int i=0; i<list.size(); i++) {
             int hour = list.get(i).getHour();
             int minute = list.get(i).getMinute();
             Date depTime = TimeHelper.getHourBack(depDate, hour, minute);
-            try {
                 List<Trip> trips = tripRepository.findByRoute_IdAndDepartureTimeBetween
                         (list.get(i).getRoute().getId(), depTime, TimeHelper.addHours(depDate, 23, 59));
                 if (trips != null) {
@@ -134,11 +132,7 @@ public class TripService {
                         }
                     }
                 }
-            } catch (PersistenceException ex) {
-                LOGGER.error("Невозможно получить информацию о расписании");
-                throw new ServiceException("Невозможно получить информацию о расписании");
-            }
-
+        }
         }
         return results;
     }
@@ -151,56 +145,62 @@ public class TripService {
      */
 
     @PreAuthorize("hasRole('admin')")
-    public List<TripTO> getAllTrips() throws ServiceException {
-        List<Trip> trips = new ArrayList<Trip>();
-        try {
-            trips = tripRepository.findAll();
-        } catch (PersistenceException ex) {
-            LOGGER.error("Невозможно получить информацию о рейсах");
-            throw new ServiceException("Невозможно получить информацию о рейсах");
-        }
+    public List<TripTO> getAllTrips() {
+        List<Trip> trips = tripRepository.findAll();
         List<TripTO> result = new ArrayList<TripTO>();
-        for (Trip t : trips) {
-            TripTO trip = new TripTO();
-            trip.setArrival(RouteHelper.getArrivalDate(t.getRoute(), t.getDepartureTime()));
-            trip.setDeparture(t.getDepartureTime());
-            trip.setNumber(t.getTrain().getId());
-            trip.setSeatCount(t.getTrain().getSeatCount());
-            String trainName = t.getTrain().getName();
-            if (trainName != null) {
-                trip.setRoute(RouteHelper.getRouteName(t.getRoute()) + " &laquo;" + trainName + "&raquo;");
-            } else {
-                trip.setRoute(RouteHelper.getRouteName(t.getRoute()));
+        if (trips != null) {
+            for (Trip t : trips) {
+                TripTO trip = new TripTO();
+                trip.setArrival(RouteHelper.getArrivalDate(t.getRoute(), t.getDepartureTime()));
+                trip.setDeparture(t.getDepartureTime());
+                trip.setNumber(t.getTrain().getId());
+                trip.setSeatCount(t.getTrain().getSeatCount());
+                String trainName = t.getTrain().getName();
+                if (trainName != null) {
+                    trip.setRoute(RouteHelper.getRouteName(t.getRoute()) + " &laquo;" + trainName + "&raquo;");
+                } else {
+                    trip.setRoute(RouteHelper.getRouteName(t.getRoute()));
+                }
+                trip.setId(t.getId());
+                result.add(trip);
             }
-            trip.setId(t.getId());
-            result.add(trip);
         }
         return result;
     }
 
     @PreAuthorize("hasRole('admin')")
-    public List<TripTO> getTripsByTrain(int id) {
+    public List<TripTO> getTripsByTrain(int id) throws TrainNotFoundException {
+        if (trainRepository.findOne(id) == null) {
+            throw new TrainNotFoundException("Поезда с номером " + id + " в базе данных не существует");
+        }
         List<Trip> trips = tripRepository.findByTrain_Id(id);
         List<TripTO> results = new ArrayList<TripTO>();
-        for (Trip trip : trips) {
-            TripTO t = new TripTO();
-            t.setId(trip.getId());
-            results.add(t);
+        if (trips != null) {
+            for (Trip trip : trips) {
+                TripTO t = new TripTO();
+                t.setId(trip.getId());
+                results.add(t);
+            }
         }
         return results;
     }
 
     @PreAuthorize("hasRole('admin')")
-    public void deleteTrip(TripTO trip) throws Exception {
-        if (tripRepository.findOne(trip.getId()) == null) {
-            throw new Exception();
+    public void deleteTrip(TripTO tripTO) throws TripNotFoundException {
+        Trip trip = tripRepository.findOne(tripTO.getId());
+        if (trip == null) {
+            throw new TripNotFoundException("Рейса с id=" + tripTO.getId() + " в базе данных не существует");
         }
-        tripRepository.delete(trip.getId());
-        LOGGER.info("Удаление рейса " + trip.getRoute() + " из базы данных");
+        tripRepository.delete(trip);
+        LOGGER.info("Удаление рейса " + trip.getId() + " из базы данных");
     }
 
     @PreAuthorize("hasRole('admin')")
-    public List<TripTO> getTripsByRoute(int id) {
+    public List<TripTO> getTripsByRoute(int id) throws TripNotFoundException {
+        Route route = routeRepository.findOne(id);
+        if (route == null) {
+            throw new TripNotFoundException("Рейса с id=" + id + " в базе данных не существует");
+        }
         List<Trip> trips = tripRepository.findByRoute_Id(id);
         List<TripTO> results = new ArrayList<TripTO>();
         for (Trip t : trips) {
@@ -209,5 +209,15 @@ public class TripService {
             results.add(trip);
         }
         return results;
+    }
+
+    @PreAuthorize("hasRole('admin')")
+    public boolean isTripHasTickets(TripTO tripTO) throws TripNotFoundException {
+        Trip trip = tripRepository.findOne(tripTO.getId());
+        if (trip == null) {
+            throw new TripNotFoundException("Рейса с id=" + tripTO.getId() + " в базе данных не существует");
+        }
+        List<Ticket> tickets = ticketRepository.findByTrip_Id(trip.getId());
+        return !tickets.isEmpty();
     }
 }

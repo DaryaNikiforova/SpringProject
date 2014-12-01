@@ -13,7 +13,7 @@ public class TrainTO {
     @Max(value = 999999)
     private int number;
 
-    //@Pattern(regexp = "[|A-Za-z\\p{L}][A-Za-z- \\p{L}]{0,98}[|A-Za-z\\p{L}]")
+    @Pattern(regexp = "([0-9A-Za-z\\p{L}][0-9A-Za-z- \\p{L}]{0,98}[0-9A-Za-z\\p{L}])*")
     private String name;
 
     @NotNull

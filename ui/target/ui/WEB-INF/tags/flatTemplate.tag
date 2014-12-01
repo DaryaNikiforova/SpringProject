@@ -31,28 +31,28 @@
                 <li class="dropdown <c:if test="${menuBlock eq 'station'}">active</c:if>">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="stations">Станции<span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="stations">
-                        <li <c:if test="${menuBlock eq 'station' && menuRow eq 'get'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/main/station/getStations">Список станций</a></li>
+                        <li <c:if test="${menuBlock eq 'station' && menuRow eq 'get'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/main/station/">Список станций</a></li>
                         <li <c:if test="${menuBlock eq 'station' &&menuRow eq 'add'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/main/station/add">Добавить станцию</a></li>
                     </ul>
                 </li>
                 <li class="dropdown <c:if test="${menuBlock eq 'train'}">active</c:if>">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="trains">Поезда<span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="trains">
-                        <li <c:if test="${menuBlock eq 'train' && menuRow eq 'get'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/main/train/getTrains">Список поездов</a></li>
+                        <li <c:if test="${menuBlock eq 'train' && menuRow eq 'get'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/main/train/">Список поездов</a></li>
                         <li <c:if test="${menuBlock eq 'train' && menuRow eq 'add'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/main/train/add">Добавить поезд</a></li>
                     </ul>
                 </li>
                 <li class="dropdown" <c:if test="${menuBlock eq 'route'}">active</c:if>>
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="routes">Маршруты<span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="routes">
-                        <li <c:if test="${menuBlock eq 'route' && menuRow eq 'get'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/secure/getRoutes">Список маршрутов</a></li>
-                        <li <c:if test="${menuBlock eq 'route' && menuRow eq 'add'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/secure/addRoute">Добавить маршрут</a></li>
+                        <li <c:if test="${menuBlock eq 'route' && menuRow eq 'get'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/main/route/">Список маршрутов</a></li>
+                        <li <c:if test="${menuBlock eq 'route' && menuRow eq 'add'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/main/route/add">Добавить маршрут</a></li>
                     </ul>
                 </li>
                 <li class="dropdown" <c:if test="${menuBlock eq 'trip'}">active</c:if>>
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="trips">Рейсы<span class="caret"></span></a>
                     <ul class="dropdown-menu" aria-labelledby="trip">
-                        <li <c:if test="${menuBlock eq 'trip' && menuRow eq 'get'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/main/trip">Список рейсов</a></li>
+                        <li <c:if test="${menuBlock eq 'trip' && menuRow eq 'get'}">class="active"</c:if>><a href="<%=request.getContextPath()%>/main/trip/">Список рейсов</a></li>
                     </ul>
                 </li>
             </ul>
@@ -61,6 +61,7 @@
                 <li><a href="<%=request.getContextPath()%>/main/search"><span class="glyphicon glyphicon-search"></span></a></li>
                 <li><a href="<%=request.getContextPath()%>/main/index">На главную</a></li>
                 <security:authorize access="isAuthenticated()">
+                    <li><a href="<%=request.getContextPath()%>/main/cabinet">Личный кабинет</a></li>
                     <li><a href="<c:url value="/j_spring_security_logout"/>">Выйти</a></li>
                 </security:authorize>
                 <security:authorize access="isAnonymous()">

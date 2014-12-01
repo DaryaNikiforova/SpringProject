@@ -14,6 +14,19 @@ import javax.validation.constraints.NotNull;
  */
 public class RouteTO {
 
+    private int number;
+
+    @NotNull
+    @UniqueStations
+    @IncreasingDistance
+    @IncreasingTime
+    @RouteEntriesCorrectness
+    private AutoPopulatingList<RouteEntryTO> routeEntries = null;
+    private String route;
+    private String time;
+    private String distance;
+
+
     public RouteTO() {
     }
 
@@ -56,17 +69,5 @@ public class RouteTO {
     public void setDistance(String distance) {
         this.distance = distance;
     }
-
-    private int number;
-
-    @NotNull
-    @UniqueStations
-    @IncreasingDistance
-    @IncreasingTime
-    @RouteEntriesCorrectness
-    private AutoPopulatingList<RouteEntryTO> routeEntries = null;
-    private String route;
-    private String time;
-    private String distance;
 
 }

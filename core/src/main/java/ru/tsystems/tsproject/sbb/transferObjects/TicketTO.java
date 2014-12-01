@@ -24,11 +24,17 @@ public class TicketTO {
     private String rateName;
     private int trainRate;
     private String login;
-    //private Map<Long, String> services;
-    List<String> services;
+    private int id;
+    private List<ServiceTO> services;
     private List<Integer> seats;
     private Map<Long, String> rateTypes;
     private double price;
+
+    public TicketTO() {
+        seats = new ArrayList<Integer>();
+        rateTypes = new HashMap<Long, String>();
+        services = new ArrayList<ServiceTO>();
+    }
 
     public String getLogin() {
         return login;
@@ -37,7 +43,6 @@ public class TicketTO {
     public void setLogin(String login) {
         this.login = login;
     }
-
 
     public String getRateName() {
         return rateName;
@@ -71,10 +76,20 @@ public class TicketTO {
         this.trainRate = trainRate;
     }
 
-    public TicketTO() {
-        seats = new ArrayList<Integer>();
-        services = new ArrayList<String>();
-        rateTypes = new HashMap<Long, String>();
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<ServiceTO> getServices() {
+        return services;
+    }
+
+    public void setServices(List<ServiceTO> services) {
+        this.services = services;
     }
 
     public int getTripId() {
@@ -165,14 +180,6 @@ public class TicketTO {
         this.rateType = rateType;
     }
 
-    public List<String> getServices() {
-        return services;
-    }
-
-    public void setServices(List<String> services) {
-        this.services = services;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -180,7 +187,6 @@ public class TicketTO {
     public void setPrice(double price) {
         this.price = price;
     }
-
 
     public List<Integer> getSeats() {
         return seats;
