@@ -2,162 +2,162 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e1b8a3dd-76ea-455b-84fc-a154ed999552" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/exceptions/BadRequestException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/CabinetController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/helper/ClientHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/responses/ErrorMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/GlobalDefaultExceptionHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/NoAvailableSeats.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/RouteNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/RouteServiceTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/SeatAlreadyRegisteredException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/converters/ServiceConverter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/ServiceTO.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/TicketNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/TripDetailsNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/TripNotFoundException.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/TripServiceTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/responses/ValidationResponse.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/resources/js/ajax-delete-items.js" />
-      <change type="NEW" beforePath="" afterPath="$USER_HOME$/sbb/ui/src/main/webapp/error.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/error.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/error400.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/error403.jsp" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/error500.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/getTickets.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/CabinetController.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/NoAvailableSeats.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/SeatAlreadyRegisteredException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/exceptions/BadRequestException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/RouteServiceTest.java" />
       <change type="NEW" beforePath="" afterPath="$USER_HOME$/Library/Preferences/IntelliJIdea13/options/security.xml" />
-      <change type="DELETED" beforePath="$USER_HOME$/sbb/ui/target/classes/ru/tsystems/tsproject/sbb/Servlet.class" afterPath="" />
-      <change type="DELETED" beforePath="$USER_HOME$/sbb/ui/target/ui/WEB-INF/classes/ru/tsystems/tsproject/sbb/Servlet.class" afterPath="" />
-      <change type="DELETED" beforePath="$USER_HOME$/sbb/ui/target/ui/WEB-INF/lib/servlet-api-2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/FactoryDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/RateDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/RouteDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/RouteEntryDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/ServiceDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/StationDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/TicketDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/TrainDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/TripDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/UserDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/FactoryDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/RateDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/RouteDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/RouteEntryDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/ServiceDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/StationDAOImpl.java" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/getTickets.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/error.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/resources/js/ajax-delete-items.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/responses/ErrorMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/responses/ValidationResponse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/GlobalDefaultExceptionHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/TripDetailsNotFoundException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/error400.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/TicketNotFoundException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/ServiceTO.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/helper/ClientHelper.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/converters/ServiceConverter.java" />
+      <change type="NEW" beforePath="" afterPath="$USER_HOME$/sbb/ui/src/main/webapp/error.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/TripServiceTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/error403.jsp" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/exceptions/TripNotFoundException.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/BuyTicketServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/MapperManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/UserValidatorImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/webapp/error403.jsp" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/TicketDAOImpl.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/TrainDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/TripDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/UserDAOImpl.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/helpers/NumberHelper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/project.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/BuyTicketServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/IndexServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/LoginServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/LogoutServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/sbb/ui/target/classes/ru/tsystems/tsproject/sbb/Servlet.class" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/PurchaseServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/RegisterServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/SearchStationTripServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/TripDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/RouteEntryDAOImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/TicketDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/TrainDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/Mapper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/RateDAOImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/LoginServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/StationDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/StationMapperImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/filters/AdminFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/sbb/ui/target/ui/WEB-INF/classes/ru/tsystems/tsproject/sbb/Servlet.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/LoginMapperImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/Validator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/RouteValidatorImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/GetStationsServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/RouteEntryDAO.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/SearchTripServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/AddRouteServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/SearchMapperImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/GetPassengersServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/FactoryDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/RouteMapperImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/providers/EntityManagerProvider.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/TrainValidatorImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/GetRoutesServlet.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/AddStationServlet.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/AddTrainServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/GetPassengersServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/GetRoutesServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/GetStationsServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/GetTrainsServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/GetTripsServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/filters/AdminFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/filters/AuthFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/helpers/StringHelper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/Mapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/MapperManager.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/LoginMapperImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/RouteMapperImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/SearchMapperImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/SearchStationTripServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/ServiceDAO.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/SearchStationMapperImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/StationMapperImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/TrainMapperImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/UserMapperImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/providers/EntityManagerProvider.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/ValidationManager.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/Validator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/LoginValidatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/RouteValidatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/SearchStationValidatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/SearchValidatorImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$USER_HOME$/sbb/ui/target/ui/WEB-INF/lib/servlet-api-2.5.jar" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/StationValidatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/TrainValidatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/UserValidatorImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/helpers/StringHelper.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/project.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/StationDAOImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/SearchValidatorImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/TripDAOImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/RegisterServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/LoginValidatorImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/IndexServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/ServiceDAOImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/TrainMapperImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/RouteDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/mappers/impl/UserMapperImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/UserDAOImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/ValidationManager.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/AddRouteServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/RateDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/UserDAO.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/RouteDAOImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/LogoutServlet.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/webapp/error.jsp" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/webapp/error403.jsp" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/buyTicket.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/ticketInfo.jsp" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/ui/src/main/webapp/error404.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/error404.jsp" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/ui.war" afterPath="$USER_HOME$/sbb/ui/target/ui.war" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/GetTripsServlet.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/dao/impl/FactoryDAOImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/filters/AuthFilter.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/SearchStationValidatorImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/secure/GetTrainsServlet.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/StationTO.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/StationTO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/repositories/TicketRepository.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/repositories/TicketRepository.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/SearchController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/SearchController.java" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/project.log" afterPath="$USER_HOME$/sbb/project.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/TrainServiceTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/TrainServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/resources/messages_ru.properties" afterPath="$PROJECT_DIR$/ui/src/main/resources/messages_ru.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/addStation.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/addStation.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/getStations.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/getStations.jsp" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/UserValidatorImpl.java" afterPath="$USER_HOME$/sbb/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/UserValidatorImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TrainController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TrainController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/helpers/TicketHelper.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/helpers/TicketHelper.java" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/LoginServlet.java" afterPath="$USER_HOME$/sbb/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/LoginServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TripService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TripService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/TrainTO.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/TrainTO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/resources/messages.properties" afterPath="$PROJECT_DIR$/ui/src/main/resources/messages.properties" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/ui/WEB-INF/web.xml" afterPath="$USER_HOME$/sbb/ui/target/ui/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/ui.war" afterPath="$USER_HOME$/sbb/ui/target/ui.war" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TripController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TripController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/route/getRoutes.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/route/getRoutes.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/StationController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/StationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/editTrain.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/editTrain.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/buyTicket.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/ticketInfo.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/SearchTO.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/SearchTO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/TicketServiceTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/TicketServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/StationService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/StationService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/route/addRoute.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/route/addRoute.jsp" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/core/src/test/java/ru/tsystems/tsproject/sbb/TicketServiceTest.java" afterPath="$USER_HOME$/sbb/core/src/test/java/ru/tsystems/tsproject/sbb/TicketServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/classes/log4j.xml" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/classes/log4j.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/UserService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/UserService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TrainService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TrainService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/search/searchtrip.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/search/searchtrip.jsp" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/ui/src/main/webapp/error404.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/error404.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/UserController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/UserController.java" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$USER_HOME$/sbb/ui/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/RouteController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/RouteController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/RouteService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/RouteService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/RouteTO.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/RouteTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/SearchController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/SearchController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/SearchTO.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/SearchTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/StationController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/StationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/StationService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/StationService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/StationServiceTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/StationServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/StationTO.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/StationTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TicketController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TicketController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/helpers/TicketHelper.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/helpers/TicketHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/repositories/TicketRepository.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/database/repositories/TicketRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TicketService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TicketService.java" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/core/src/test/java/ru/tsystems/tsproject/sbb/TicketServiceTest.java" afterPath="$USER_HOME$/sbb/core/src/test/java/ru/tsystems/tsproject/sbb/TicketServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/TicketServiceTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/TicketServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/TicketTO.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/TicketTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/validators/TimeBoundsValidator.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/validators/TimeBoundsValidator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/helpers/TimeHelper.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/helpers/TimeHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TrainController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TrainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TrainService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TrainService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/TrainServiceTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/TrainServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/TrainTO.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/TrainTO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TripController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TripController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TripService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TripService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/UserController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/UserService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/UserServiceTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/UserServiceTest.java" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/UserValidatorImpl.java" afterPath="$USER_HOME$/sbb/ui/src/main/java/ru/tsystems/tsproject/sbb/validation/impl/UserValidatorImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/route/addRoute.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/route/addRoute.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/addStation.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/addStation.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/addTrain.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/addTrain.jsp" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/src/main/webapp/WEB-INF/tags/adminTemplate.tag" afterPath="$USER_HOME$/sbb/ui/src/main/webapp/WEB-INF/tags/adminTemplate.tag" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/applicationContext.xml" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/buyTicket.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/buyTicket.jsp" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$USER_HOME$/sbb/ui/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/search/searchstationtrip.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/search/searchstationtrip.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/dispatcher-servlet.xml" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/dispatcher-servlet.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/editStation.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/editStation.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/editTrain.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/editTrain.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/flatTemplate.tag" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/flatTemplate.tag" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/functions.tld" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/functions.tld" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/route/getRoutes.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/route/getRoutes.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/getStations.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/getStations.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/security.xml" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/security.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/purchasesummary.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/purchasesummary.jsp" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/src/main/webapp/WEB-INF/tags/adminTemplate.tag" afterPath="$USER_HOME$/sbb/ui/src/main/webapp/WEB-INF/tags/adminTemplate.tag" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/addTrain.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/addTrain.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/helpers/TimeHelper.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/helpers/TimeHelper.java" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/ui/index.jsp" afterPath="$USER_HOME$/sbb/ui/target/ui/index.jsp" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/maven-archiver/pom.properties" afterPath="$USER_HOME$/sbb/ui/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/StationServiceTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/StationServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/validators/TimeBoundsValidator.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/validators/TimeBoundsValidator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/getTrains.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/getTrains.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/trip/getTrips.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/trip/getTrips.jsp" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/ui/index.jsp" afterPath="$USER_HOME$/sbb/ui/target/ui/index.jsp" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$USER_HOME$/sbb/ui/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/classes/log4j.xml" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/classes/log4j.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/mainTemplate.tag" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/mainTemplate.tag" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/resources/messages.properties" afterPath="$PROJECT_DIR$/ui/src/main/resources/messages.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/resources/messages_ru.properties" afterPath="$PROJECT_DIR$/ui/src/main/resources/messages_ru.properties" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/core/src/main/resources/META-INF/persistence.xml" afterPath="$USER_HOME$/sbb/core/src/main/resources/META-INF/persistence.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/maven-archiver/pom.properties" afterPath="$USER_HOME$/sbb/ui/target/maven-archiver/pom.properties" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/project.log" afterPath="$USER_HOME$/sbb/project.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/purchasesummary.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/purchasesummary.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/search/searchstationtrip.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/search/searchstationtrip.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/search/searchtrip.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/search/searchtrip.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/security.xml" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/security.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/ui/WEB-INF/web.xml" afterPath="$USER_HOME$/sbb/ui/target/ui/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/.idea/workspace.xml" afterPath="$USER_HOME$/sbb/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/UserServiceTest.java" afterPath="$PROJECT_DIR$/core/src/test/java/ru/tsystems/tsproject/sbb2/UserServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TicketController.java" afterPath="$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TicketController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/mainTemplate.tag" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/mainTemplate.tag" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/TicketTO.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/TicketTO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/flatTemplate.tag" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/flatTemplate.tag" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/functions.tld" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/functions.tld" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/editStation.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/station/editStation.jsp" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/ui/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$USER_HOME$/sbb/ui/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/buyTicket.jsp" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/ticket/buyTicket.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/RouteTO.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/RouteTO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$USER_HOME$/sbb/core/src/main/resources/META-INF/persistence.xml" afterPath="$USER_HOME$/sbb/core/src/main/resources/META-INF/persistence.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TicketService.java" afterPath="$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/services/TicketService.java" />
     </list>
     <ignored path="sbb2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -185,26 +185,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="StationController.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/StationController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1210" max-vertical-offset="2190">
-              <caret line="89" column="12" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
-              <folding>
-                <element signature="e#5327#5341#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PageNotFoundException.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/exceptions/PageNotFoundException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
+            <state vertical-scroll-proportion="0.0" vertical-offset="150" max-vertical-offset="285">
               <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -222,7 +208,7 @@
       <file leaf-file-name="flatTemplate.tag" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/flatTemplate.tag">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.5" vertical-offset="420" max-vertical-offset="1425">
+            <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1425">
               <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
               <folding />
             </state>
@@ -232,7 +218,7 @@
       <file leaf-file-name="mainTemplate.tag" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/mainTemplate.tag">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.625" vertical-offset="192" max-vertical-offset="855">
+            <state vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="855">
               <caret line="33" column="58" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
               <folding />
             </state>
@@ -242,11 +228,9 @@
       <file leaf-file-name="TrainController.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/TrainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="2430">
+            <state vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="2700">
               <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding>
-                <element signature="e#5726#5740#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -254,7 +238,7 @@
       <file leaf-file-name="SearchTO.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/SearchTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="795">
+            <state vertical-scroll-proportion="0.0" vertical-offset="360" max-vertical-offset="1125">
               <caret line="24" column="84" selection-start-line="24" selection-start-column="84" selection-end-line="24" selection-end-column="84" />
               <folding />
             </state>
@@ -264,21 +248,31 @@
       <file leaf-file-name="StationTO.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/core/src/main/java/ru/tsystems/tsproject/sbb/transferObjects/StationTO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
+            <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="750">
               <caret line="13" column="84" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="84" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="messages.properties" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="messages.properties" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/src/main/resources/messages.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-1.5555556" vertical-offset="393" max-vertical-offset="885">
+              <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
           <provider editor-type-id="ResourceBundle">
             <state />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CabinetController.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/CabinetController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6213018" vertical-offset="90" max-vertical-offset="885">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.56390977" vertical-offset="0" max-vertical-offset="975">
+              <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -287,7 +281,7 @@
       <file leaf-file-name="searchtrip.jsp" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/search/searchtrip.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.375" vertical-offset="546" max-vertical-offset="2145">
+            <state vertical-scroll-proportion="0.0" vertical-offset="546" max-vertical-offset="2145">
               <caret line="45" column="165" selection-start-line="45" selection-start-column="153" selection-end-line="45" selection-end-column="165" />
               <folding />
             </state>
@@ -441,7 +435,6 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-10" />
     <option name="y" value="22" />
     <option name="width" value="1366" />
     <option name="height" value="673" />
@@ -472,7 +465,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -483,6 +475,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -1667,12 +1660,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -1691,6 +1678,12 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="Unnamed" type="JBossConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="JBoss 8.1.0.Final" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
@@ -1885,12 +1878,13 @@
       <workItem from="1415662091103" duration="16531000" />
       <workItem from="1415821098127" duration="104524000" />
       <workItem from="1416490792277" duration="88254000" />
-      <workItem from="1416856324618" duration="143693000" />
+      <workItem from="1416856324618" duration="144696000" />
+      <workItem from="1418049690387" duration="130000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="373614000" />
+    <option name="totallyTimeSpent" value="374747000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1913,7 +1907,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="22" width="1366" height="673" extended-state="6" />
+    <frame x="0" y="22" width="1366" height="673" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1936,10 +1930,8 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874355" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2616179" sideWeight="0.78096676" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2616179" sideWeight="0.78096676" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32702237" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16993958" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1948,18 +1940,20 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32874355" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32702237" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36488813" sideWeight="0.21903323" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1981,8 +1975,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32702237" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.16993958" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -2020,14 +2014,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/train/editTrain.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.125" vertical-offset="585" max-vertical-offset="1080">
-          <caret line="34" column="100" selection-start-line="34" selection-start-column="100" selection-end-line="34" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/route/editRoute.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2925">
@@ -2058,7 +2044,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1845">
           <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2066,9 +2051,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="305" max-vertical-offset="1620">
           <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2076,9 +2058,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="365" max-vertical-offset="3285">
           <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2086,7 +2065,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="961" max-vertical-offset="1455">
           <caret line="94" column="71" selection-start-line="94" selection-start-column="71" selection-end-line="94" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2102,7 +2080,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="780">
           <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2158,9 +2135,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
           <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2184,9 +2158,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1773" max-vertical-offset="3615">
           <caret line="130" column="69" selection-start-line="130" selection-start-column="69" selection-end-line="130" selection-end-column="69" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2194,7 +2165,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.69871795" vertical-offset="138" max-vertical-offset="660">
           <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2202,7 +2172,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38613862" vertical-offset="1425" max-vertical-offset="2280">
           <caret line="130" column="42" selection-start-line="130" selection-start-column="42" selection-end-line="130" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2210,7 +2179,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18329939" vertical-offset="0" max-vertical-offset="615">
           <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2234,7 +2202,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="330">
           <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2242,7 +2209,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="600">
           <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2250,7 +2216,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4385965" vertical-offset="10" max-vertical-offset="510">
           <caret line="10" column="18" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2298,9 +2263,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="269" max-vertical-offset="600">
           <caret line="31" column="42" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2364,9 +2326,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="345">
           <caret line="9" column="37" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2374,9 +2333,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="925" max-vertical-offset="2190">
           <caret line="89" column="12" selection-start-line="89" selection-start-column="12" selection-end-line="89" selection-end-column="12" />
-          <folding>
-            <element signature="e#5327#5341#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2384,9 +2341,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="285">
           <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2400,7 +2355,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/flatTemplate.tag">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.5" vertical-offset="420" max-vertical-offset="1425">
+        <state vertical-scroll-proportion="0.0" vertical-offset="420" max-vertical-offset="1425">
           <caret line="64" column="52" selection-start-line="64" selection-start-column="52" selection-end-line="64" selection-end-column="52" />
           <folding />
         </state>
@@ -2408,7 +2363,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/tags/mainTemplate.tag">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.625" vertical-offset="192" max-vertical-offset="855">
+        <state vertical-scroll-proportion="0.0" vertical-offset="192" max-vertical-offset="855">
           <caret line="33" column="58" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
           <folding />
         </state>
@@ -2418,9 +2373,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="210" max-vertical-offset="2430">
           <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="e#5726#5740#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2442,19 +2395,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ui/src/main/webapp/WEB-INF/jsp/search/searchtrip.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.375" vertical-offset="546" max-vertical-offset="2145">
+        <state vertical-scroll-proportion="0.0" vertical-offset="546" max-vertical-offset="2145">
           <caret line="45" column="165" selection-start-line="45" selection-start-column="153" selection-end-line="45" selection-end-column="165" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ui/src/main/resources/messages.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5555556" vertical-offset="393" max-vertical-offset="885">
+          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="ResourceBundle">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ui/src/main/java/ru/tsystems/tsproject/sbb/controllers/CabinetController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6213018" vertical-offset="90" max-vertical-offset="885">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.56390977" vertical-offset="0" max-vertical-offset="975">
+          <caret line="35" column="34" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
           <folding />
         </state>
       </provider>
